@@ -12,7 +12,7 @@ public class HttpURLConnectionExample
 
   public void sendGet() throws Exception
   {
-    String url = "http://whitehare.com";
+    String url = "http://localhost:8080/HTTPReceiver/test/verify2";
     URL obj = new URL(url);
 
     HttpURLConnection con = (HttpURLConnection) obj.openConnection();
@@ -35,6 +35,16 @@ public class HttpURLConnectionExample
     in.close();
 
     System.out.println(response.toString());
+  }
+
+  public void sendPut() throws Exception
+  {
+    String url = "http://localhost:8080/HTTPReceiver/test/add?cardnum=1234&classroom=Math";
+    URL obj = new URL(url);
+    HttpURLConnection con = (HttpURLConnection) obj.openConnection();
+    con.setRequestMethod("PUT");
+    con.setRequestProperty("User-Agent", USER_AGENT);
+    con.setRequestProperty("Accept-Language", "en-US,en;q=0.5");
   }
 
   public void sendPost() throws Exception

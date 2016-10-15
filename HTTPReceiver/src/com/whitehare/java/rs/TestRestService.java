@@ -3,8 +3,10 @@ package com.whitehare.java.rs;
 import java.io.InputStream;
 
 import javax.ws.rs.GET;
+import javax.ws.rs.PUT;
 import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
+import javax.ws.rs.QueryParam;
 import javax.ws.rs.core.MediaType;
 
 @Path("/test")
@@ -32,5 +34,15 @@ public class TestRestService
     return "<ctofservice>" + "<celsius>" + "ABC123" + "</celsius>" + "<ctofoutput>" + result + "</ctofoutput>"
         + "</ctofservice>";
 
+  }
+
+  @Path("add")
+  @PUT
+  @Produces(MediaType.TEXT_PLAIN)
+  public String modifyNameTypeRS(@QueryParam("cardnum") String cardnum, @QueryParam("classroom") String classroom)
+  {
+    // UpdateEntry ue = new UpdateEntry();
+    // ue.updateNameType(idx, name, type);
+    return "Card: " + cardnum + " swipe detected in Classroom:" + classroom;
   }
 }
