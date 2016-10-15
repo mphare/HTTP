@@ -2,6 +2,7 @@ package com.whitehare.java.rs;
 
 import java.io.InputStream;
 
+import javax.ws.rs.DELETE;
 import javax.ws.rs.GET;
 import javax.ws.rs.PUT;
 import javax.ws.rs.Path;
@@ -44,5 +45,13 @@ public class TestRestService
     // UpdateEntry ue = new UpdateEntry();
     // ue.updateNameType(idx, name, type);
     return "Card: " + cardnum + " swipe detected in Classroom:" + classroom;
+  }
+
+  @Path("delete")
+  @DELETE
+  @Produces(MediaType.TEXT_PLAIN)
+  public String deleteTest(@QueryParam("studentid") String studentid)
+  {
+    return "Deleted " + studentid;
   }
 }
