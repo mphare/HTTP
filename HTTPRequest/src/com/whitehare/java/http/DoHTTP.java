@@ -15,7 +15,7 @@ public class DoHTTP
 
     try
     {
-      System.out.println("About to GET\n");
+      System.out.println("\nAbout to GET");
       logger.debug("Client Get Test 1");
       myHttp.sendGet();
     } catch (Exception e)
@@ -25,7 +25,7 @@ public class DoHTTP
     }
     try
     {
-      System.out.println("About to POST\n");
+      System.out.println("\nAbout to POST");
       myHttp.sendPost();
     } catch (Exception e)
     {
@@ -34,7 +34,7 @@ public class DoHTTP
     }
     try
     {
-      System.out.println("About to PUT\n");
+      System.out.println("\nAbout to PUT");
       myHttp.sendPut();
     } catch (Exception e)
     {
@@ -43,7 +43,7 @@ public class DoHTTP
     }
     try
     {
-      System.out.println("About to DELETE\n");
+      System.out.println("\nAbout to DELETE");
       myHttp.sendDelete();
     } catch (Exception e)
     {

@@ -48,6 +48,7 @@ public class TestRestService
   @Produces(MediaType.TEXT_PLAIN)
   public String putTest(@QueryParam("cardnum") String cardnum, @QueryParam("classroom") String classroom)
   {
+    logger.debug("Server Put Test: " + cardnum + " Classroom: " + classroom);
     // UpdateEntry ue = new UpdateEntry();
     // ue.updateNameType(idx, name, type);
     return "Card: " + cardnum + " swipe detected in Classroom:" + classroom;
@@ -58,7 +59,8 @@ public class TestRestService
   @Produces(MediaType.TEXT_PLAIN)
   public String postTest(@QueryParam("studentid") String studentid)
   {
-    return "Deleted " + studentid;
+    logger.debug("Server Post Test: " + studentid);
+    return "Posted " + studentid;
   }
 
   @Path("delete")
@@ -66,6 +68,7 @@ public class TestRestService
   @Produces(MediaType.TEXT_PLAIN)
   public String deleteTest(@QueryParam("studentid") String studentid)
   {
+    logger.debug("Server Delete Test: " + studentid);
     return "Deleted " + studentid;
   }
 }
