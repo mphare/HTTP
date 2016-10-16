@@ -11,16 +11,20 @@ import javax.ws.rs.Produces;
 import javax.ws.rs.QueryParam;
 import javax.ws.rs.core.MediaType;
 
+import org.apache.log4j.Logger;
+
 @Path("/test")
 public class TestRestService
 {
+  private static Logger logger = Logger.getLogger(TestRestService.class);
+
   @GET
   @Path("/get")
   @Produces("application/xml")
-  public String verifyEndpoint(InputStream incomingData)
+  public String getTest(InputStream incomingData)
   {
     String result = "The Test Endpoint was Hit";
-
+    logger.debug("Server Get Test 1");
     return "<ctofservice>" + "<celsius>" + "XYZZY" + "</celsius>" + "<ctofoutput>" + result + "</ctofoutput>"
         + "</ctofservice>";
 
@@ -29,9 +33,10 @@ public class TestRestService
   @GET
   @Path("/get2")
   @Produces(MediaType.TEXT_PLAIN)
-  public String verifyEndpoint2(InputStream incomingData)
+  public String getTest2(InputStream incomingData)
   {
     String result = "The 2nd Test Endpoint was Hit";
+    logger.debug("Server Get Test 2");
 
     return "<ctofservice>" + "<celsius>" + "ABC123" + "</celsius>" + "<ctofoutput>" + result + "</ctofoutput>"
         + "</ctofservice>";
@@ -41,7 +46,7 @@ public class TestRestService
   @Path("put")
   @PUT
   @Produces(MediaType.TEXT_PLAIN)
-  public String modifyNameTypeRS(@QueryParam("cardnum") String cardnum, @QueryParam("classroom") String classroom)
+  public String putTest(@QueryParam("cardnum") String cardnum, @QueryParam("classroom") String classroom)
   {
     // UpdateEntry ue = new UpdateEntry();
     // ue.updateNameType(idx, name, type);

@@ -1,7 +1,10 @@
 package com.whitehare.java.http;
 
+import org.apache.log4j.Logger;
+
 public class DoHTTP
 {
+  private static Logger logger = Logger.getLogger(DoHTTP.class);
 
   public static void main(String[] args)
   {
@@ -13,6 +16,7 @@ public class DoHTTP
     try
     {
       System.out.println("About to GET\n");
+      logger.debug("Client Get Test 1");
       myHttp.sendGet();
     } catch (Exception e)
     {
