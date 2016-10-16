@@ -12,7 +12,7 @@ public class HttpURLConnectionExample
 
   public void sendGet() throws Exception
   {
-    String url = "http://localhost:8080/HTTPReceiver/test/verify2";
+    String url = "http://localhost:8080/HTTPReceiver/test/get2";
     URL obj = new URL(url);
 
     HttpURLConnection con = (HttpURLConnection) obj.openConnection();
@@ -39,21 +39,38 @@ public class HttpURLConnectionExample
 
   public void sendPut() throws Exception
   {
-    String url = "http://localhost:8080/HTTPReceiver/test/add?cardnum=1234&classroom=Math";
+    String url = "http://localhost:8080/HTTPReceiver/test/put?cardnum=1234&classroom=Math";
     URL obj = new URL(url);
     HttpURLConnection con = (HttpURLConnection) obj.openConnection();
     con.setRequestMethod("PUT");
     con.setRequestProperty("User-Agent", USER_AGENT);
     con.setRequestProperty("Accept-Language", "en-US,en;q=0.5");
+    int responseCode = con.getResponseCode();
+    System.out.println("\nPUT: Response Code : " + responseCode);
   }
 
   public void sendPost() throws Exception
   {
-    String url = "http://whitehare.com";
+    String url = "http://localhost:8080/HTTPReceiver/test/post?studentid=55543";
     URL obj = new URL(url);
     HttpURLConnection con = (HttpURLConnection) obj.openConnection();
     con.setRequestMethod("POST");
     con.setRequestProperty("User-Agent", USER_AGENT);
     con.setRequestProperty("Accept-Language", "en-US,en;q=0.5");
+    int responseCode = con.getResponseCode();
+    System.out.println("\nPOST: Response Code : " + responseCode);
+  }
+
+  public void sendDelete() throws Exception
+  {
+    String url = "http://localhost:8080/HTTPReceiver/test/delete?studentid=373737373";
+    URL obj = new URL(url);
+    HttpURLConnection con = (HttpURLConnection) obj.openConnection();
+    con.setRequestMethod("DELETE");
+    con.setRequestProperty("User-Agent", USER_AGENT);
+    con.setRequestProperty("Accept-Language", "en-US,en;q=0.5");
+    int responseCode = con.getResponseCode();
+    System.out.println("\nDELETE: Response Code : " + responseCode);
+
   }
 }

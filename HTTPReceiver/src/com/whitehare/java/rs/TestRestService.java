@@ -4,6 +4,7 @@ import java.io.InputStream;
 
 import javax.ws.rs.DELETE;
 import javax.ws.rs.GET;
+import javax.ws.rs.POST;
 import javax.ws.rs.PUT;
 import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
@@ -14,7 +15,7 @@ import javax.ws.rs.core.MediaType;
 public class TestRestService
 {
   @GET
-  @Path("/verify")
+  @Path("/get")
   @Produces("application/xml")
   public String verifyEndpoint(InputStream incomingData)
   {
@@ -26,7 +27,7 @@ public class TestRestService
   }
 
   @GET
-  @Path("/verify2")
+  @Path("/get2")
   @Produces(MediaType.TEXT_PLAIN)
   public String verifyEndpoint2(InputStream incomingData)
   {
@@ -37,7 +38,7 @@ public class TestRestService
 
   }
 
-  @Path("add")
+  @Path("put")
   @PUT
   @Produces(MediaType.TEXT_PLAIN)
   public String modifyNameTypeRS(@QueryParam("cardnum") String cardnum, @QueryParam("classroom") String classroom)
@@ -45,6 +46,14 @@ public class TestRestService
     // UpdateEntry ue = new UpdateEntry();
     // ue.updateNameType(idx, name, type);
     return "Card: " + cardnum + " swipe detected in Classroom:" + classroom;
+  }
+
+  @Path("post")
+  @POST
+  @Produces(MediaType.TEXT_PLAIN)
+  public String postTest(@QueryParam("studentid") String studentid)
+  {
+    return "Deleted " + studentid;
   }
 
   @Path("delete")
