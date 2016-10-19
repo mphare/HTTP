@@ -9,8 +9,8 @@ public class WhenReceivingCardSwipe
   @Test
   public void shouldSendCardnumberAndClassroom()
   {
-    String cardnum = "12345678";
-    String classroom = "100";
+    String cardnum = "2224446668";
+    String classroom = "202";
 
     ServiceCenter sc = new ServiceCenter();
 
