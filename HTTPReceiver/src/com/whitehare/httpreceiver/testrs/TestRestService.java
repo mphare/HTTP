@@ -1,4 +1,4 @@
-package com.whitehare.java.rs;
+package com.whitehare.httpreceiver.testrs;
 
 import java.io.InputStream;
 

@@ -1,4 +1,4 @@
-package com.whitehare.java.http;
+package com.whitehare.httprequest;
 
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
@@ -73,4 +73,5 @@ public class HttpURLConnectionExample
     System.out.println("\nDELETE: Response Code : " + responseCode);
 
   }
+
 }
