@@ -19,6 +19,9 @@ public class CreateCardSwipe
     {
       transaction = session.beginTransaction();
       DBase dBase = new DBase();
+      dBase.setCardnumber(cs.getCardNumber());
+      dBase.setClassRoom(cs.getClassRoom());
+
       // dBase.setName(name);
       // dBase.setType(type);
 

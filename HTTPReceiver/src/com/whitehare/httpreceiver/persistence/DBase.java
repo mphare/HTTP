@@ -33,23 +33,23 @@ public class DBase
   }
 
   @Column(name = "CardNumber")
-  public String getName()
+  public String getCardNumber()
   {
     return cardnumber;
   }
 
-  public void setName(String cardnumber)
+  public void setCardnumber(String cardnumber)
   {
     this.cardnumber = cardnumber;
   }
 
   @Column(name = "ClassRoom")
-  public String getType()
+  public String getClassRoom()
   {
     return classroom;
   }
 
-  public void setType(String classroom)
+  public void setClassRoom(String classroom)
   {
     this.classroom = classroom;
   }

@@ -10,7 +10,7 @@ public class CardSwipe
   public void sendSwipedCard(String cardnumber, String classroom) throws Exception
   {
     String url = "http://localhost:8080/HTTPReceiver/send/swipe?cardnumber=" + cardnumber + "&classroom=" + classroom;
-    System.out.println("\nSwiping Card: card number: " + cardnumber + " classroom: " + classroom);
+    System.out.println("\nSwiping Card: card number: " + cardnumber + " classroom: " + classroom + " URL: " + url);
     URL obj = new URL(url);
     HttpURLConnection con = (HttpURLConnection) obj.openConnection();
     con.setRequestMethod("POST");
