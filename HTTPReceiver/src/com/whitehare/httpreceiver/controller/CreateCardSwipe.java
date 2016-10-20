@@ -1,5 +1,6 @@
 package com.whitehare.httpreceiver.controller;
 
+import org.apache.log4j.Logger;
 import org.hibernate.HibernateException;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
@@ -10,6 +11,8 @@ import com.whitehare.httpreceiver.persistence.util.HibernateUtil;
 
 public class CreateCardSwipe
 {
+  private static Logger logger = Logger.getLogger(CreateCardSwipe.class);
+
   public long saveCardSwipe(CardSwipe cs)
   {
     Session session = HibernateUtil.getSessionFactory().openSession();
@@ -27,7 +30,7 @@ public class CreateCardSwipe
 
       index = (Long) session.save(dBase);
       transaction.commit();
-
+      logger.debug("Committed Transaction: " + index);
     } catch (HibernateException e)
     {
       transaction.rollback();
