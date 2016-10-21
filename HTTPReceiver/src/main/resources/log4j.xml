@@ -38,7 +38,7 @@
 		<level value="DEBUG" />
 		<appender-ref ref="consoleAppender" />
 		<!-- 
-		<appender-ref ref="fileAppender" />
 		 -->
+		<appender-ref ref="fileAppender" />
 	</root>
 </log4j:configuration>

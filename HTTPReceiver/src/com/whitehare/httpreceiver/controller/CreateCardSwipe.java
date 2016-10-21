@@ -15,6 +15,7 @@ public class CreateCardSwipe
 
   public long saveCardSwipe(CardSwipe cs)
   {
+    logger.debug("SaveCardSwipe: cardnumber" + cs.getCardNumber() + " classroom: " + cs.getClassRoom());
     Session session = HibernateUtil.getSessionFactory().openSession();
     Transaction transaction = null;
     Long index = null;
