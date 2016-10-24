@@ -28,7 +28,7 @@ public class ServiceCenter
     logger.debug("Card Swipe Detected.  Cardnumber: " + cardnum + " Classroom: " + classroom);
 
     CreateCardSwipe ccs = new CreateCardSwipe();
-    ccs.saveCardSwipe(cs);
+    // ccs.saveCardSwipe(cs);
 
     return "Card: " + cardnum + " swipe detected in Classroom:" + classroom;
   }

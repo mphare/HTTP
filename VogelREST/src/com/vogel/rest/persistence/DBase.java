@@ -1,4 +1,4 @@
-package com.whitehare.httpreceiver.persistence;
+package com.vogel.rest.persistence;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -10,10 +10,10 @@ import javax.persistence.Table;
 @Table(name = "basetable")
 public class DBase
 {
-  private String cardnumber;
-  private String classroom;
 
   private long   index;
+  private String name;
+  private String type;
 
   public DBase()
   {
@@ -34,25 +34,25 @@ public class DBase
   }
 
   @Column(name = "NAME")
-  public String getCardNumber()
+  public String getName()
   {
-    return cardnumber;
+    return name;
   }
 
-  public void setCardnumber(String cardnumber)
+  public void setName(String name)
   {
-    this.cardnumber = cardnumber;
+    this.name = name;
   }
 
   @Column(name = "TYPE")
-  public String getClassRoom()
+  public String getType()
   {
-    return classroom;
+    return type;
   }
 
-  public void setClassRoom(String classroom)
+  public void setType(String type)
   {
-    this.classroom = classroom;
+    this.type = type;
   }
 
 }

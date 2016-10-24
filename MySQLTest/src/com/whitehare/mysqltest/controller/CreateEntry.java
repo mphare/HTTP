@@ -1,16 +1,21 @@
-package com.whitehare.httpreceiver.controller;
+package com.whitehare.mysqltest.controller;
 
 import org.hibernate.HibernateException;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 
-import com.whitehare.httpreceiver.persistence.DBase;
-import com.whitehare.httpreceiver.persistence.util.HibernateUtil;
+import com.whitehare.mysqltest.persistence.DBase;
+import com.whitehare.mysqltest.persistence.util.HibernateUtil;
 
-public class CreateCardSwipe
+public class CreateEntry
 {
-
-  public long saveCardClass(String cardnumber, String classroom)
+  /**
+   * === C ===
+   * 
+   * @param courseName
+   * @return
+   */
+  public Long saveNameType(String name, String type)
   {
     Session session = HibernateUtil.getSessionFactory().openSession();
     Transaction transaction = null;
@@ -19,10 +24,12 @@ public class CreateCardSwipe
     {
       transaction = session.beginTransaction();
       DBase dBase = new DBase();
-      dBase.setCardnumber(cardnumber);
-      dBase.setClassRoom(classroom);
+      dBase.setName(name);
+      dBase.setType(type);
+
       index = (Long) session.save(dBase);
       transaction.commit();
+
     } catch (HibernateException e)
     {
       transaction.rollback();
