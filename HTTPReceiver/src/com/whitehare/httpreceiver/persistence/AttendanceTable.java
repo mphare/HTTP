@@ -7,22 +7,22 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "basetable")
-public class DBase
+@Table(name = "CardSwipes")
+public class AttendanceTable
 {
   private String cardnumber;
   private String classroom;
 
   private long   index;
 
-  public DBase()
+  public AttendanceTable()
   {
 
   }
 
   @Id
   @GeneratedValue
-  @Column(name = "ENTRY_ID")
+  @Column(name = "SWIPEID")
   public long getIndex()
   {
     return index;
@@ -33,7 +33,7 @@ public class DBase
     this.index = index;
   }
 
-  @Column(name = "NAME")
+  @Column(name = "CARDNUMBER")
   public String getCardNumber()
   {
     return cardnumber;
@@ -44,7 +44,7 @@ public class DBase
     this.cardnumber = cardnumber;
   }
 
-  @Column(name = "TYPE")
+  @Column(name = "CLASSROOM")
   public String getClassRoom()
   {
     return classroom;

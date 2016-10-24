@@ -4,7 +4,7 @@ import org.hibernate.HibernateException;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 
-import com.whitehare.httpreceiver.persistence.DBase;
+import com.whitehare.httpreceiver.persistence.AttendanceTable;
 import com.whitehare.httpreceiver.persistence.util.HibernateUtil;
 
 public class CreateCardSwipe
@@ -18,7 +18,7 @@ public class CreateCardSwipe
     try
     {
       transaction = session.beginTransaction();
-      DBase dBase = new DBase();
+      AttendanceTable dBase = new AttendanceTable();
       dBase.setCardnumber(cardnumber);
       dBase.setClassRoom(classroom);
       index = (Long) session.save(dBase);
