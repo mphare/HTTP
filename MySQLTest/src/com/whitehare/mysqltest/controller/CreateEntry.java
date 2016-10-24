@@ -4,7 +4,7 @@ import org.hibernate.HibernateException;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 
-import com.whitehare.mysqltest.persistence.DBase;
+import com.whitehare.mysqltest.persistence.AttendanceTable;
 import com.whitehare.mysqltest.persistence.util.HibernateUtil;
 
 public class CreateEntry
@@ -23,9 +23,9 @@ public class CreateEntry
     try
     {
       transaction = session.beginTransaction();
-      DBase dBase = new DBase();
-      dBase.setName(name);
-      dBase.setType(type);
+      AttendanceTable dBase = new AttendanceTable();
+      dBase.setCardNumber(name);
+      dBase.setClassRoom(type);
 
       index = (Long) session.save(dBase);
       transaction.commit();
