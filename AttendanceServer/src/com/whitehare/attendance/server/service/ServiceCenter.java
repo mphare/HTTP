@@ -8,6 +8,7 @@ import javax.ws.rs.core.MediaType;
 
 import org.apache.log4j.Logger;
 
+import com.whitehare.attendance.server.beans.CardSwipe;
 import com.whitehare.attendance.server.controller.CreateSwipe;
 
 @Path("/send")
@@ -21,12 +22,12 @@ public class ServiceCenter
   public String newCardSwipe(@QueryParam("cardnumber") String cardnumber, @QueryParam("classroom") String classroom)
   {
     // Date date = new Date();
-    // CardSwipe cs = new CardSwipe(cardnum, classroom, date);
+    CardSwipe cs = new CardSwipe(cardnumber, classroom);
     logger.debug("Card Swipe Detected. Cardnumber: " + cardnumber + " Classroom:" + classroom);
 
     CreateSwipe ccs = new CreateSwipe();
-    // ccs.saveCardSwipe(cs);
-    ccs.saveNameType(cardnumber, classroom);
+    // ccs.saveNameType(cardnumber, classroom);
+    ccs.saveCardSwipe(cs);
 
     return "Card: " + cardnumber + " swipe detected in Classroom:" + classroom;
   }

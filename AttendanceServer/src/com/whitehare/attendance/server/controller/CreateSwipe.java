@@ -4,11 +4,17 @@ import org.hibernate.HibernateException;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 
+import com.whitehare.attendance.server.beans.CardSwipe;
 import com.whitehare.attendance.server.persistence.DBase;
 import com.whitehare.attendance.server.persistence.util.HibernateUtil;
 
 public class CreateSwipe
 {
+  public Long saveCardSwipe(CardSwipe cs)
+  {
+    return saveNameType(cs.getCardNumber(), cs.getClassRoom());
+  }
+
   public Long saveNameType(String name, String type)
   {
     Session session = HibernateUtil.getSessionFactory().openSession();
