@@ -5,11 +5,11 @@ import org.apache.log4j.Logger;
 public class DoHTTP
 {
   private static Logger logger    = Logger.getLogger(DoHTTP.class);
-  private static String classRoom = "101";
+  private static String classRoom = "1030";
 
   public static void main(String[] args)
   {
-    String cardNumber = "246813579";
+    String cardNumber = "1020304";
     // TODO Auto-generated method stub
     // HttpURLConnectionExample myHttp = new HttpURLConnectionExample();
     CardSwipe cs = new CardSwipe();

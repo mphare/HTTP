@@ -51,7 +51,7 @@ public class HttpURLConnectionExample
 
   public void sendPost() throws Exception
   {
-    String url = "http://localhost:8080/HTTPReceiver/test/post?studentid=55543";
+    String url = "http://localhost:8080/AttendanceServer/web/send/swipe?cardnumber=55543&classroom=1030";
     URL obj = new URL(url);
     HttpURLConnection con = (HttpURLConnection) obj.openConnection();
     con.setRequestMethod("POST");
