@@ -22,8 +22,7 @@ public class ServiceCenter
   {
     // Date date = new Date();
     // CardSwipe cs = new CardSwipe(cardnum, classroom, date);
-    // logger.debug("Card Swipe Detected. Cardnumber: " + cardnum + " Classroom:
-    // " + classroom);
+    logger.debug("Card Swipe Detected. Cardnumber: " + cardnumber + " Classroom:" + classroom);
 
     CreateSwipe ccs = new CreateSwipe();
     // ccs.saveCardSwipe(cs);
