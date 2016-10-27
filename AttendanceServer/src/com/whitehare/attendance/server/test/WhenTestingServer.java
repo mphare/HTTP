@@ -3,6 +3,7 @@ package com.whitehare.attendance.server.test;
 import org.junit.Test;
 
 import com.whitehare.attendance.server.controller.CreateSwipe;
+import com.whitehare.attendance.server.controller.GetStudents;
 
 public class WhenTestingServer
 {
@@ -13,5 +14,13 @@ public class WhenTestingServer
     CreateSwipe ce = new CreateSwipe();
     ce.saveNameType("Crimson", "Stark");
 
+  }
+
+  @Test
+  public void shouldRetrieveStudents()
+  {
+    GetStudents gs = new GetStudents();
+    String retString = gs.getAllStudents();
+    System.out.println("All Students: " + retString);
   }
 }

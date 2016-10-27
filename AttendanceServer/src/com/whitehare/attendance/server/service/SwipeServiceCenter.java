@@ -12,9 +12,9 @@ import com.whitehare.attendance.server.beans.CardSwipe;
 import com.whitehare.attendance.server.controller.CreateSwipe;
 
 @Path("/send")
-public class ServiceCenter
+public class SwipeServiceCenter
 {
-  private static Logger logger = Logger.getLogger(ServiceCenter.class);
+  private static Logger logger = Logger.getLogger(SwipeServiceCenter.class);
 
   @Path("swipe")
   @POST
