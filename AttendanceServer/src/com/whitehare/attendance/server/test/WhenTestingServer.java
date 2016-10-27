@@ -20,6 +20,7 @@ public class WhenTestingServer
   public void shouldRetrieveStudents()
   {
     GetStudents gs = new GetStudents();
-    gs.getAllStudents();
+    String results = gs.getAllStudents();
+    System.out.println("Student: " + results);
   }
 }
