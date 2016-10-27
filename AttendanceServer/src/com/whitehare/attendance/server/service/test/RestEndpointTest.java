@@ -1,4 +1,4 @@
-package com.whitehare.httpreceiver.testrs;
+package com.whitehare.attendance.server.service.test;
 
 import java.io.InputStream;
 
@@ -14,9 +14,9 @@ import javax.ws.rs.core.MediaType;
 import org.apache.log4j.Logger;
 
 @Path("/test")
-public class TestRestService
+public class RestEndpointTest
 {
-  private static Logger logger = Logger.getLogger(TestRestService.class);
+  private static Logger logger = Logger.getLogger(RestEndpointTest.class);
 
   @GET
   @Path("/get")

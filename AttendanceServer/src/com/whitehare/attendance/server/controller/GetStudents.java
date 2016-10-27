@@ -1,33 +1,32 @@
 package com.whitehare.attendance.server.controller;
 
+import java.util.List;
+
 import org.hibernate.HibernateException;
+import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 
-import com.whitehare.attendance.server.beans.CardSwipe;
-import com.whitehare.attendance.server.persistence.CardSwipes;
 import com.whitehare.attendance.server.persistence.util.HibernateUtil;
 
-public class CreateSwipe
+public class GetStudents
 {
-  public Long saveCardSwipe(CardSwipe cs)
-  {
-    return saveNameType(cs.getCardNumber(), cs.getClassRoom());
-  }
-
-  public Long saveNameType(String name, String type)
+  public String getAllStudents()
   {
     Session session = HibernateUtil.getSessionFactory().openSession();
     Transaction transaction = null;
-    Long index = null;
+    String students = new String();
+    List results = null;
     try
     {
       transaction = session.beginTransaction();
-      CardSwipes dBase = new CardSwipes();
-      dBase.setName(name);
-      dBase.setType(type);
 
-      index = (Long) session.save(dBase);
+      String hql = "FROM Students";
+      Query query = session.createQuery(hql);
+      results = query.list();
+
+      // students = session.createSQLQuery("select * from
+      // Students").list().toString();
       transaction.commit();
 
     } catch (HibernateException e)
@@ -38,7 +37,7 @@ public class CreateSwipe
     {
       session.close();
     }
-    return index;
+    Object temp = results.get(1);
+    return temp.toString();
   }
-
 }

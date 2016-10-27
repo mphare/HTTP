@@ -8,5 +8,6 @@ public class WhenTestingEmail
   public void testValue1()
   {
     System.out.println("Test TestLine");
+
   }
 }

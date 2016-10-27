@@ -23,8 +23,8 @@ public class DoSendMail
 
   private static void sendHTMLEmail()
   {
-    // String to = "mphare@whitehare.com";
-    String to = "mhare@zixcorp.com";
+    String to = "mphare@whitehare.com";
+    // String to = "mhare@zixcorp.com";
     String from = "bilbo.baggins@theshire.com";
     String host = "localhost";
     Properties properties = System.getProperties();

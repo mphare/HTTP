@@ -1,18 +1,15 @@
-package com.whitehare.httpreceiver.beans;
-
-import java.util.Date;
+package com.whitehare.attendance.server.beans;
 
 public class CardSwipe
 {
   String cardNumber;
   String classRoom;
-  Date   swipeTime = new Date();
 
-  public CardSwipe(String cardNumber, String classRoom, Date swipeTime)
+  public CardSwipe(String cardNumber, String classRoom)
   {
+    super();
     this.cardNumber = cardNumber;
     this.classRoom = classRoom;
-    this.swipeTime = swipeTime;
   }
 
   public String getCardNumber()
@@ -33,16 +30,6 @@ public class CardSwipe
   public void setClassRoom(String classRoom)
   {
     this.classRoom = classRoom;
-  }
-
-  public Date getSwipeTime()
-  {
-    return swipeTime;
-  }
-
-  public void setSwipeTime(Date swipeTime)
-  {
-    this.swipeTime = swipeTime;
   }
 
 }

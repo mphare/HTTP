@@ -21,6 +21,8 @@
 	log4j.appender.R.layout=org.apache.log4j.PatternLayout
 	log4j.appender.R.layout.ConversionPattern=[%d{ISO8601}]%5p%6.6r[%t]%x - %C.%M(%F:%L) - %m%n
 	 -->
+	 <!-- 
+	 -->
 	<appender name="fileAppender" class="org.apache.log4j.RollingFileAppender">
 		<param name="append" value="false" />
 		<param name="File" value="log4j.log" />
@@ -28,7 +30,8 @@
 		<layout class="org.apache.log4j.PatternLayout">
 			<param name="ConversionPattern" value="[%d{ISO8601}]%5p%6.6r[%t]%x - %C.%M(%F:%L) - %m%n" />
 		</layout>
-	</appender><!-- 
+	</appender>
+	 <!-- 
 	log4j.rootCategory=DEBUG, C, R
 	where:
 	C -> consoleAppender
@@ -39,6 +42,8 @@
 		<appender-ref ref="consoleAppender" />
 		<!-- 
 		 -->
+		 <!-- 
 		<appender-ref ref="fileAppender" />
+		 -->
 	</root>
 </log4j:configuration>

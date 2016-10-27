@@ -44,6 +44,12 @@ Simple index page
 	<p>
 		Page accessed
 		<%=++accessCount%>
+		<% if (accessCount == 1) { %> 
+		  time 
+		  <%} else { %> 
+		  times 
+		  <%}%>
+		
 		since server reboot
 	</p>
 	<%@ include file="parts/Footer.jsp"%>
