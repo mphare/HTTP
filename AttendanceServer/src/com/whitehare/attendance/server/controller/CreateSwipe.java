@@ -5,7 +5,7 @@ import org.hibernate.Session;
 import org.hibernate.Transaction;
 
 import com.whitehare.attendance.server.beans.CardSwipe;
-import com.whitehare.attendance.server.persistence.DBase;
+import com.whitehare.attendance.server.persistence.CardSwipes;
 import com.whitehare.attendance.server.persistence.util.HibernateUtil;
 
 public class CreateSwipe
@@ -23,7 +23,7 @@ public class CreateSwipe
     try
     {
       transaction = session.beginTransaction();
-      DBase dBase = new DBase();
+      CardSwipes dBase = new CardSwipes();
       dBase.setName(name);
       dBase.setType(type);
 
