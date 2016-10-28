@@ -8,17 +8,21 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
+/*
+ * The idea here is this is a basic CardSwipes SELECT, 
+ * joined with the Students to provide First and Last Name
+ */
+
 @Entity
 @Table(name = "CardSwipes")
-public class CardSwipes
+public class TestJoin
 {
-
   private long   swipeID;
   private String cardnumber;
   private String classRoom;
   private Date   swipeTime;
 
-  public CardSwipes()
+  public TestJoin()
   {
 
   }

@@ -7,31 +7,48 @@ import org.junit.Test;
 
 import com.whitehare.attendance.server.controller.CreateSwipe;
 import com.whitehare.attendance.server.controller.GetStudents;
+import com.whitehare.attendance.server.controller.GetSwipes;
 import com.whitehare.attendance.server.persistence.Students;
-import com.whitehare.attendance.server.service.test.RestEndpointTest;
+import com.whitehare.attendance.server.persistence.TestJoin;
 
 public class WhenTestingServer
 {
-  private static Logger logger = Logger.getLogger(RestEndpointTest.class);
+  private static Logger logger = Logger.getLogger(WhenTestingServer.class);
 
   @Test
   public void shouldwWriteToDatabase()
   {
 
     CreateSwipe ce = new CreateSwipe();
-    ce.saveNameType("Crimson", "Stark");
+    ce.saveCardClass("Crimson", "Stark");
 
+  }
+
+  @Test
+  public void shouldRetrieveCardSwipes()
+  {
+    logger.info("About to shouldRetrieveCardSwipes");
+    GetSwipes gs = new GetSwipes();
+    List<TestJoin> testjoins = gs.getAllCardSwipes();
+
+    logger.info("Size: " + testjoins.size() + " Number(1) " + testjoins.get(0).getCardNumber());
+
+    for (TestJoin testjoin : testjoins)
+    {
+      logger.info("[][]> " + testjoin.getCardNumber());
+    }
   }
 
   @Test
   public void shouldRetrieveStudents()
   {
+    logger.info("About to shouldRetrieveStudents");
     GetStudents gs = new GetStudents();
     List<Students> students = gs.getAllStudents();
 
     for (Students student : students)
     {
-      logger.debug("Firstname: " + student.getFirstName() + " Lastname: " + student.getLastName() + " Cardnumber: "
+      logger.info("Firstname: " + student.getFirstName() + " Lastname: " + student.getLastName() + " Cardnumber: "
           + student.getCardNumber());
 
     }

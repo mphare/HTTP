@@ -12,10 +12,10 @@ public class CreateSwipe
 {
   public Long saveCardSwipe(CardSwipe cs)
   {
-    return saveNameType(cs.getCardNumber(), cs.getClassRoom());
+    return saveCardClass(cs.getCardNumber(), cs.getClassRoom());
   }
 
-  public Long saveNameType(String name, String type)
+  public Long saveCardClass(String cardNumber, String classRoom)
   {
     Session session = HibernateUtil.getSessionFactory().openSession();
     Transaction transaction = null;
@@ -24,8 +24,8 @@ public class CreateSwipe
     {
       transaction = session.beginTransaction();
       CardSwipes dBase = new CardSwipes();
-      dBase.setName(name);
-      dBase.setType(type);
+      dBase.setCardNumber(cardNumber);
+      dBase.setClassRoom(classRoom);
 
       index = (Long) session.save(dBase);
       transaction.commit();
