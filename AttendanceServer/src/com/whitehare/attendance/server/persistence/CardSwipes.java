@@ -1,5 +1,7 @@
 package com.whitehare.attendance.server.persistence;
 
+import java.util.Date;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -14,6 +16,7 @@ public class CardSwipes
   private long   swipeID;
   private String cardnumber;
   private String classRoom;
+  private Date   swipeTime;
 
   public CardSwipes()
   {
@@ -53,6 +56,17 @@ public class CardSwipes
   public void setType(String classRoom)
   {
     this.classRoom = classRoom;
+  }
+
+  @Column(name = "SwipeTime")
+  public Date getSwipeTime()
+  {
+    return swipeTime;
+  }
+
+  public void setSwipeTime(Date swipeTime)
+  {
+    this.swipeTime = swipeTime;
   }
 
 }
