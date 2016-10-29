@@ -24,10 +24,10 @@ public class GetStudents
 
       String hql = "FROM Students";
       Query query = session.createQuery(hql);
+      // String sql = "SELECT * FROM Students";
+      // Query query = session.createSQLQuery(sql);
       results = query.list();
 
-      // students = session.createSQLQuery("select * from
-      // Students").list().toString();
       transaction.commit();
 
     } catch (HibernateException e)

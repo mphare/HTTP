@@ -11,9 +11,9 @@ import com.whitehare.attendance.server.controller.GetSwipes;
 import com.whitehare.attendance.server.persistence.Students;
 import com.whitehare.attendance.server.persistence.TestJoin;
 
-public class WhenTestingServer
+public class WhenTestingServerReads
 {
-  private static Logger logger = Logger.getLogger(WhenTestingServer.class);
+  private static Logger logger = Logger.getLogger(WhenTestingServerReads.class);
 
   @Test
   public void shouldRetrieveCardSwipes()

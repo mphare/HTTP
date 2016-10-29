@@ -27,6 +27,8 @@ public class GetSwipes
 
       String hql = "FROM TestJoins";
       Query query = session.createQuery(hql);
+      // String sql = "SELECT CardNumber FROM CardSwipes";
+      // Query query = session.createSQLQuery(sql);
       results = query.list();
 
       transaction.commit();
