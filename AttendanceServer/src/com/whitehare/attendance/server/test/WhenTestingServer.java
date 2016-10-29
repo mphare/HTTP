@@ -6,7 +6,6 @@ import java.util.List;
 import org.apache.log4j.Logger;
 import org.junit.Test;
 
-import com.whitehare.attendance.server.controller.CreateSwipe;
 import com.whitehare.attendance.server.controller.GetStudents;
 import com.whitehare.attendance.server.controller.GetSwipes;
 import com.whitehare.attendance.server.persistence.Students;
@@ -15,15 +14,6 @@ import com.whitehare.attendance.server.persistence.TestJoin;
 public class WhenTestingServer
 {
   private static Logger logger = Logger.getLogger(WhenTestingServer.class);
-
-  @Test
-  public void shouldwWriteToDatabase()
-  {
-
-    CreateSwipe ce = new CreateSwipe();
-    ce.saveCardClass("Crimson", "Stark");
-
-  }
 
   @Test
   public void shouldRetrieveCardSwipes()
