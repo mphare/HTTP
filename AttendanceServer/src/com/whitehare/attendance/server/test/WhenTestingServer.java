@@ -1,5 +1,6 @@
 package com.whitehare.attendance.server.test;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.apache.log4j.Logger;
@@ -29,9 +30,11 @@ public class WhenTestingServer
   {
     logger.info("About to shouldRetrieveCardSwipes");
     GetSwipes gs = new GetSwipes();
-    List<TestJoin> testjoins = gs.getAllCardSwipes();
+    List<TestJoin> testjoins = new ArrayList<TestJoin>();
 
-    logger.info("Size: " + testjoins.size() + " Number(1) " + testjoins.get(0).getCardNumber());
+    testjoins = gs.getAllCardSwipes();
+
+    logger.info("Size: " + testjoins.size() + " Number(1) " + testjoins.get(0).getCardNumber().toString());
 
     for (TestJoin testjoin : testjoins)
     {

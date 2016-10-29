@@ -1,5 +1,6 @@
 package com.whitehare.attendance.server.controller;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.hibernate.HibernateException;
@@ -18,12 +19,13 @@ public class GetSwipes
     Session session = HibernateUtil.getSessionFactory().openSession();
     Transaction transaction = null;
 
-    List<TestJoin> results = null;
+    List<TestJoin> results = new ArrayList<TestJoin>();
+
     try
     {
       transaction = session.beginTransaction();
 
-      String hql = "FROM CardSwipes";
+      String hql = "FROM TestJoins";
       Query query = session.createQuery(hql);
       results = query.list();
 

@@ -13,7 +13,7 @@ import javax.persistence.Table;
  * joined with the Students to provide First and Last Name
  */
 
-@Entity
+@Entity(name = "TestJoins")
 @Table(name = "CardSwipes")
 public class TestJoin
 {
