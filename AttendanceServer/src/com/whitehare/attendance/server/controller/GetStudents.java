@@ -7,26 +7,27 @@ import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 
+import com.whitehare.attendance.server.persistence.Students;
 import com.whitehare.attendance.server.persistence.util.HibernateUtil;
 
 public class GetStudents
 {
-  public String getAllStudents()
+  public List<Students> getAllStudents()
   {
     Session session = HibernateUtil.getSessionFactory().openSession();
     Transaction transaction = null;
-    String students = new String();
-    List results = null;
+
+    List<Students> results = null;
     try
     {
       transaction = session.beginTransaction();
 
       String hql = "FROM Students";
       Query query = session.createQuery(hql);
+      // String sql = "SELECT * FROM Students";
+      // Query query = session.createSQLQuery(sql);
       results = query.list();
 
-      // students = session.createSQLQuery("select * from
-      // Students").list().toString();
       transaction.commit();
 
     } catch (HibernateException e)
@@ -37,7 +38,6 @@ public class GetStudents
     {
       session.close();
     }
-    Object temp = results.get(1);
-    return temp.toString();
+    return results;
   }
 }

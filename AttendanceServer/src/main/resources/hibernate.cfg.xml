@@ -17,5 +17,6 @@
 		<property name="hdm2ddl.auto">create</property>
 		<mapping class="com.whitehare.attendance.server.persistence.CardSwipes" />
 		<mapping class="com.whitehare.attendance.server.persistence.Students" />
+		<mapping class="com.whitehare.attendance.server.persistence.TestJoin" />
 	</session-factory>
 </hibernate-configuration>

@@ -1,33 +1,36 @@
 package com.whitehare.attendance.server.controller;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.hibernate.HibernateException;
+import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 
-import com.whitehare.attendance.server.beans.CardSwipe;
-import com.whitehare.attendance.server.persistence.CardSwipes;
+import com.whitehare.attendance.server.persistence.TestJoin;
 import com.whitehare.attendance.server.persistence.util.HibernateUtil;
 
-public class CreateSwipe
+public class GetSwipes
 {
-  public Long saveCardSwipe(CardSwipe cs)
-  {
-    return saveCardClass(cs.getCardNumber(), cs.getClassRoom());
-  }
 
-  public Long saveCardClass(String cardNumber, String classRoom)
+  public List<TestJoin> getAllCardSwipes()
   {
     Session session = HibernateUtil.getSessionFactory().openSession();
     Transaction transaction = null;
-    Long index = null;
+
+    List<TestJoin> results = new ArrayList<TestJoin>();
+
     try
     {
       transaction = session.beginTransaction();
-      CardSwipes dBase = new CardSwipes();
-      dBase.setCardNumber(cardNumber);
-      dBase.setClassRoom(classRoom);
 
-      index = (Long) session.save(dBase);
+      String hql = "FROM TestJoins";
+      Query query = session.createQuery(hql);
+      // String sql = "SELECT CardNumber FROM CardSwipes";
+      // Query query = session.createSQLQuery(sql);
+      results = query.list();
+
       transaction.commit();
 
     } catch (HibernateException e)
@@ -38,7 +41,6 @@ public class CreateSwipe
     {
       session.close();
     }
-    return index;
+    return results;
   }
-
 }

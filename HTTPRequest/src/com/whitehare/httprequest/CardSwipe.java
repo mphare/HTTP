@@ -5,11 +5,12 @@ import java.net.URL;
 
 public class CardSwipe
 {
-  private final String USER_AGENT = "Mozilla/5.0";
+  private final String USER_AGENT    = "Mozilla/5.0";
+  private String       serverAddress = "http://localhost:8080";
 
   public void sendSwipedCard(String cardnumber, String classroom) throws Exception
   {
-    String url = "http://localhost:8080/AttendanceServer/web/send/swipe?cardnumber=" + cardnumber + "&classroom="
+    String url = serverAddress + "/AttendanceServer/web/send/swipe?cardnumber=" + cardnumber + "&classroom="
         + classroom;
     System.out.println("\nSwiping Card: card number: " + cardnumber + " classroom: " + classroom + " URL: " + url);
     URL obj = new URL(url);

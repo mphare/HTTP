@@ -13,12 +13,12 @@ public class DoHTTP
 
   public static void main(String[] args)
   {
-    String cardNumber = "1020304";
+    String cardNumber = "00000000";
     // TODO Auto-generated method stub
     // HttpURLConnectionExample myHttp = new HttpURLConnectionExample();
     CardSwipe cs = new CardSwipe();
 
-    logger.debug("Starting Card Swipe Reader for: Classroom: " + classRoom);
+    logger.info("Starting Card Swipe Reader for: Classroom: " + classRoom);
 
     BufferedReader br = null;
 
@@ -34,16 +34,16 @@ public class DoHTTP
 
         if ("q".equals(cardNumber))
         {
-          logger.debug("Quit Reading Card Swipes for: Classroom: " + classRoom);
+          logger.info("Quit Reading Card Swipes for: Classroom: " + classRoom);
           System.out.println("Exit!");
           System.exit(0);
         }
-        logger.debug("Card Swipe Completed for: Cardnumber: " + cardNumber + " Classroom: " + classRoom);
+        logger.info("Card Swipe Completed for: Cardnumber: " + cardNumber + " Classroom: " + classRoom);
         cs.sendSwipedCard(cardNumber, classRoom);
       }
     } catch (IOException e)
     {
-      logger.debug("Card Swipe Failed for: Classroom: " + classRoom);
+      logger.info("Card Swipe Failed for: Classroom: " + classRoom);
       e.printStackTrace();
     } catch (Exception e)
     {
