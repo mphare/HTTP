@@ -15,7 +15,7 @@ public class WhenTestingServerReads
 {
   private static Logger logger = Logger.getLogger(WhenTestingServerReads.class);
 
-  @Test
+  // @Test
   public void shouldRetrieveCardSwipes()
   {
     logger.info("About to shouldRetrieveCardSwipes");
