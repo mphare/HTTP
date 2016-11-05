@@ -1,6 +1,7 @@
 package com.whitehare.attendance.server.test;
 
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 
 import org.apache.log4j.Logger;
@@ -8,6 +9,7 @@ import org.junit.Test;
 
 import com.whitehare.attendance.server.controller.GetStudents;
 import com.whitehare.attendance.server.controller.GetSwipes;
+import com.whitehare.attendance.server.persistence.CardSwipes;
 import com.whitehare.attendance.server.persistence.Students;
 import com.whitehare.attendance.server.persistence.TestJoin;
 
@@ -33,6 +35,26 @@ public class WhenTestingServerReads
   }
 
   @Test
+  public void shouldRetrieveCardSwipesSQL()
+  {
+    logger.info("About to shouldRetrieveCardSwipesSQL");
+    GetSwipes gs = new GetSwipes();
+    // List<CardSwipes> cardswipes = new ArrayList<CardSwipes>();
+
+    List cardswipes = gs.getSQLCardSwipes();
+
+    logger.info("Size: " + cardswipes.size());
+    // logger.info("Size: " + cardswipes.size() + " Number(1) " +
+    // cardswipes.get(0).getCardNumber().toString());
+
+    for (Iterator iterator = cardswipes.iterator(); iterator.hasNext();)
+    {
+      CardSwipes cardswipe = (CardSwipes) iterator.next();
+      logger.info("[][]> " + cardswipe.getCardNumber());
+    }
+  }
+
+  // @Test
   public void shouldRetrieveStudents()
   {
     logger.info("About to shouldRetrieveStudents");

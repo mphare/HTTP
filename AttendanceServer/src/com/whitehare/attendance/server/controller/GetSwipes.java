@@ -8,6 +8,7 @@ import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 
+import com.whitehare.attendance.server.persistence.CardSwipes;
 import com.whitehare.attendance.server.persistence.TestJoin;
 import com.whitehare.attendance.server.persistence.util.HibernateUtil;
 
@@ -43,4 +44,34 @@ public class GetSwipes
     }
     return results;
   }
+
+  public List<CardSwipes> getSQLCardSwipes()
+  {
+    Session session = HibernateUtil.getSessionFactory().openSession();
+    Transaction transaction = null;
+
+    // List<CardSwipes> results = new ArrayList<CardSwipes>();
+    List results = null;
+
+    try
+    {
+      transaction = session.beginTransaction();
+
+      String sql = "SELECT CardNumber FROM CardSwipes";
+      Query query = session.createSQLQuery(sql);
+      results = query.list();
+
+      transaction.commit();
+
+    } catch (HibernateException e)
+    {
+      transaction.rollback();
+      e.printStackTrace();
+    } finally
+    {
+      session.close();
+    }
+    return results;
+  }
+
 }
