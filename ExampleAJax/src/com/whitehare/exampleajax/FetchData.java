@@ -51,7 +51,7 @@ public class FetchData
 
   }
 
-  public ArrayList<Countries> getAllCountries()
+  public static ArrayList<Countries> getAllCountries()
   {
     connection = FetchData.getConnection();
 
