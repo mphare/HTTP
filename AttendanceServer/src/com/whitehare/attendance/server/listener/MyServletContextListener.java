@@ -17,8 +17,9 @@ public class MyServletContextListener implements ServletContextListener
   private ScheduledExecutorService scheduler;
 
   @Override
-  public void contextDestroyed(ServletContextEvent arg0)
+  public void contextDestroyed(ServletContextEvent event)
   {
+    scheduler.shutdownNow();
     System.out.println("...That's it..we're out");
 
   }
