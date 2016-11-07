@@ -17,7 +17,7 @@ public class DoEveryMinuteJob implements Runnable
 
     Date date = new Date();
     logger.info("It's ben a minute: " + date.toString());
-    ar.generateAttendanceReport();
+    ar.generateAttendanceReport(date);
   }
 
 }
