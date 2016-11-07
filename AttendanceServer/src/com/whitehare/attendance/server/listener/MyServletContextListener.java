@@ -8,11 +8,14 @@ import javax.servlet.ServletContextEvent;
 import javax.servlet.ServletContextListener;
 import javax.servlet.annotation.WebListener;
 
+import org.apache.log4j.Logger;
+
 import com.whitehare.attendance.server.schedular.DoEveryMinuteJob;
 
 @WebListener
 public class MyServletContextListener implements ServletContextListener
 {
+  private static Logger            logger = Logger.getLogger(MyServletContextListener.class);
 
   private ScheduledExecutorService scheduler;
 
@@ -20,14 +23,14 @@ public class MyServletContextListener implements ServletContextListener
   public void contextDestroyed(ServletContextEvent event)
   {
     scheduler.shutdownNow();
-    System.out.println("...That's it..we're out");
+    logger.info("Servlet Context Destroyed");
 
   }
 
   @Override
   public void contextInitialized(ServletContextEvent event)
   {
-    System.out.println("Hello! Let's get this show on the road..");
+    logger.info("Servlet Context Initialized");
     scheduler = Executors.newSingleThreadScheduledExecutor();
     scheduler.scheduleAtFixedRate(new DoEveryMinuteJob(), 0, 1, TimeUnit.MINUTES);
 
