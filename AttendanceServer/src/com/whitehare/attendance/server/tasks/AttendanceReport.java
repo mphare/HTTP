@@ -9,8 +9,8 @@ import org.apache.log4j.Logger;
 
 import com.whitehare.attendance.server.controller.GetStudents;
 import com.whitehare.attendance.server.controller.GetSwipes;
+import com.whitehare.attendance.server.persistence.CardSwipes;
 import com.whitehare.attendance.server.persistence.Students;
-import com.whitehare.attendance.server.persistence.TestJoin;
 
 public class AttendanceReport
 {
@@ -20,30 +20,31 @@ public class AttendanceReport
   {
     logger.info("About to generate the Attendance Report for " + date.toString());
 
-    GetStudents getstudents = new GetStudents();
-    List<Students> students = getstudents.getAllStudents();
-
-    for (Students student : students)
-    {
-      System.out.println("\nFirstname: " + student.getFirstName() + "; Lastname: " + student.getLastName()
-          + "; Cardnumber: " + student.getCardNumber());
-
-    }
+    // GetStudents getstudents = new GetStudents();
+    // List<Students> students = getstudents.getAllStudents();
+    //
+    // for (Students student : students)
+    // {
+    // System.out.println("\nFirstname: " + student.getFirstName() + ";
+    // Lastname: " + student.getLastName()
+    // + "; Cardnumber: " + student.getCardNumber());
+    //
+    // }
 
     GetSwipes gs = new GetSwipes();
-    List<TestJoin> testjoins = new ArrayList<TestJoin>();
+    List<CardSwipes> cardswipes = new ArrayList<CardSwipes>();
 
     Calendar calNow = Calendar.getInstance();
     Date endDate = calNow.getTime();
 
     calNow.add(Calendar.MINUTE, -5);
     Date startDate = calNow.getTime();
-    testjoins = gs.getRangeCardSwipes(startDate, endDate);
+    cardswipes = gs.getRangeCardSwipes(startDate, endDate);
 
-    System.out.print("\n\nGetting last 5 minute swipes: Now:" + endDate + "  started: " + startDate);
-    for (TestJoin testjoin : testjoins)
+    System.out.print("\nGetting swipes from last 5 minutes: Now:" + endDate + "  started: " + startDate);
+    for (CardSwipes cardswipe : cardswipes)
     {
-      System.out.println("\nCard Number: " + testjoin.getCardNumber() + " validated at " + testjoin.getSwipeTime());
+      System.out.println("Card Number: " + cardswipe.getCardNumber() + " validated at " + cardswipe.getSwipeTime());
     }
 
     GetStudents getsalltudents = new GetStudents();
@@ -51,7 +52,7 @@ public class AttendanceReport
 
     for (Students student : allstudents)
     {
-      System.out.println("\nFirstname: " + student.getFirstName() + " Lastname: " + student.getLastName()
+      System.out.println("Firstname: " + student.getFirstName() + " Lastname: " + student.getLastName()
           + " Cardnumber: " + student.getCardNumber());
 
     }
