@@ -10,7 +10,6 @@ import com.whitehare.attendance.server.controller.GetStudents;
 import com.whitehare.attendance.server.controller.GetSwipes;
 import com.whitehare.attendance.server.persistence.Students;
 import com.whitehare.attendance.server.persistence.TestJoin;
-import com.whitehare.attendance.server.persistence.Students;
 
 public class AttendanceReport
 {
@@ -40,10 +39,10 @@ public class AttendanceReport
       System.out.println("Card Number: " + testjoin.getCardNumber() + " validated at " + testjoin.getSwipeTime());
     }
 
-    GetStudents gs = new GetStudents();
-    List<Students> students = gs.getAllStudents();
+    GetStudents getsalltudents = new GetStudents();
+    List<Students> allstudents = getsalltudents.getAllStudents();
 
-    for (Students student : students)
+    for (Students student : allstudents)
     {
       System.out.println("Firstname: " + student.getFirstName() + " Lastname: " + student.getLastName()
           + " Cardnumber: " + student.getCardNumber());
