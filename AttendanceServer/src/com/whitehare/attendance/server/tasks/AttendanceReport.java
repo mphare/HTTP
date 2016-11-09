@@ -1,6 +1,7 @@
 package com.whitehare.attendance.server.tasks;
 
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 
@@ -24,7 +25,7 @@ public class AttendanceReport
 
     for (Students student : students)
     {
-      System.out.println("Firstname: " + student.getFirstName() + "; Lastname: " + student.getLastName()
+      System.out.println("\nFirstname: " + student.getFirstName() + "; Lastname: " + student.getLastName()
           + "; Cardnumber: " + student.getCardNumber());
 
     }
@@ -32,11 +33,17 @@ public class AttendanceReport
     GetSwipes gs = new GetSwipes();
     List<TestJoin> testjoins = new ArrayList<TestJoin>();
 
-    testjoins = gs.getAllCardSwipes();
+    Calendar calNow = Calendar.getInstance();
+    Date endDate = calNow.getTime();
 
+    calNow.add(Calendar.MINUTE, -5);
+    Date startDate = calNow.getTime();
+    testjoins = gs.getRangeCardSwipes(startDate, endDate);
+
+    System.out.print("\n\nGetting last 5 minute swipes: Now:" + endDate + "  started: " + startDate);
     for (TestJoin testjoin : testjoins)
     {
-      System.out.println("Card Number: " + testjoin.getCardNumber() + " validated at " + testjoin.getSwipeTime());
+      System.out.println("\nCard Number: " + testjoin.getCardNumber() + " validated at " + testjoin.getSwipeTime());
     }
 
     GetStudents getsalltudents = new GetStudents();
@@ -44,7 +51,7 @@ public class AttendanceReport
 
     for (Students student : allstudents)
     {
-      System.out.println("Firstname: " + student.getFirstName() + " Lastname: " + student.getLastName()
+      System.out.println("\nFirstname: " + student.getFirstName() + " Lastname: " + student.getLastName()
           + " Cardnumber: " + student.getCardNumber());
 
     }

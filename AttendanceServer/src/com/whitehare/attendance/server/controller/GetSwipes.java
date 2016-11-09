@@ -55,8 +55,8 @@ public class GetSwipes
     {
       transaction = session.beginTransaction();
 
-      String hql = "select from TestJoins where getSwipeTime > startDate";
-      Query query = session.createQuery(hql);
+      String hql = "from TestJoins where swipeTime > :startDate";
+      Query query = session.createQuery(hql).setParameter("startDate", startDate);
       results = query.list();
 
       transaction.commit();
