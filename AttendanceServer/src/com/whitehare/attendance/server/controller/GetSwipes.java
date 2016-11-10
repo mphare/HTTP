@@ -55,9 +55,7 @@ public class GetSwipes
     {
       transaction = session.beginTransaction();
 
-      // String hql = "select cswipe.cardnumber from CardSwipes as cswipe where
-      // swipeTime > :startDate";
-      String hql = "select CardNumber from CardSwipes as c where c.SwipeTime > :startDate";
+      String hql = "select cardswipes.cardNumber from CardSwipes as cardswipes where cardswipes.swipeTime > :startDate";
       Query query = session.createQuery(hql).setParameter("startDate", startDate);
       results = query.list();
 
