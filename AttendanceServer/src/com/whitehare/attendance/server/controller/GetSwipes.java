@@ -44,18 +44,18 @@ public class GetSwipes
     return results;
   }
 
-  public List<TestJoin> getRangeCardSwipes(Date startDate, Date endDate)
+  public List<CardSwipes> getRangeCardSwipes(Date startDate, Date endDate)
   {
     Session session = HibernateUtil.getSessionFactory().openSession();
     Transaction transaction = null;
 
-    List<TestJoin> results = new ArrayList<TestJoin>();
+    List<CardSwipes> results = new ArrayList<CardSwipes>();
 
     try
     {
       transaction = session.beginTransaction();
 
-      String hql = "from TestJoins where swipeTime > :startDate";
+      String hql = "from CardSwipes as card_swipe where card_swipe.swipeTime > :startDate";
       Query query = session.createQuery(hql).setParameter("startDate", startDate);
       results = query.list();
 

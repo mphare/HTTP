@@ -9,8 +9,8 @@ import org.apache.log4j.Logger;
 
 import com.whitehare.attendance.server.controller.GetStudents;
 import com.whitehare.attendance.server.controller.GetSwipes;
+import com.whitehare.attendance.server.persistence.CardSwipes;
 import com.whitehare.attendance.server.persistence.Students;
-import com.whitehare.attendance.server.persistence.TestJoin;
 
 public class AttendanceReport
 {
@@ -32,19 +32,19 @@ public class AttendanceReport
     // }
     //
     GetSwipes gs = new GetSwipes();
-    List<TestJoin> testjoins = new ArrayList<TestJoin>();
+    List<CardSwipes> cardswipes = new ArrayList<CardSwipes>();
 
     Calendar calNow = Calendar.getInstance();
     Date endDate = calNow.getTime();
 
     calNow.add(Calendar.MINUTE, -5);
     Date startDate = calNow.getTime();
-    testjoins = gs.getRangeCardSwipes(startDate, endDate);
+    cardswipes = gs.getRangeCardSwipes(startDate, endDate);
 
     System.out.println("\nGetting last 5 minute swipes: Now:" + endDate + "  started: " + startDate);
-    for (TestJoin testjoin : testjoins)
+    for (CardSwipes cardswipe : cardswipes)
     {
-      System.out.println("Card Number: " + testjoin.getCardNumber() + " validated at " + testjoin.getSwipeTime());
+      System.out.println("Card Number: " + cardswipe.getCardNumber() + " validated at " + cardswipe.getSwipeTime());
     }
 
     GetStudents getsalltudents = new GetStudents();
@@ -58,9 +58,9 @@ public class AttendanceReport
 
       String attendance = "Absent";
 
-      for (TestJoin testjoin : testjoins)
+      for (CardSwipes cardswipe : cardswipes)
       {
-        String swipeCardID = testjoin.getCardNumber();
+        String swipeCardID = cardswipe.getCardNumber();
         if (cardID.equals(swipeCardID))
         {
           attendance = "Present";
