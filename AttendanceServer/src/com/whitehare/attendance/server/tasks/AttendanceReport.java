@@ -20,16 +20,17 @@ public class AttendanceReport
   {
     logger.info("About to generate the Attendance Report for " + date.toString());
 
-    GetStudents getstudents = new GetStudents();
-    List<Students> students = getstudents.getAllStudents();
-
-    for (Students student : students)
-    {
-      System.out.println("\nFirstname: " + student.getFirstName() + "; Lastname: " + student.getLastName()
-          + "; Cardnumber: " + student.getCardNumber());
-
-    }
-
+    // GetStudents getstudents = new GetStudents();
+    // List<Students> students = getstudents.getAllStudents();
+    //
+    // for (Students student : students)
+    // {
+    // System.out.println("\nFirstname: " + student.getFirstName() + ";
+    // Lastname: " + student.getLastName()
+    // + "; Cardnumber: " + student.getCardNumber());
+    //
+    // }
+    //
     GetSwipes gs = new GetSwipes();
     List<TestJoin> testjoins = new ArrayList<TestJoin>();
 
@@ -40,10 +41,10 @@ public class AttendanceReport
     Date startDate = calNow.getTime();
     testjoins = gs.getRangeCardSwipes(startDate, endDate);
 
-    System.out.print("\n\nGetting last 5 minute swipes: Now:" + endDate + "  started: " + startDate);
+    System.out.println("\nGetting last 5 minute swipes: Now:" + endDate + "  started: " + startDate);
     for (TestJoin testjoin : testjoins)
     {
-      System.out.println("\nCard Number: " + testjoin.getCardNumber() + " validated at " + testjoin.getSwipeTime());
+      System.out.println("Card Number: " + testjoin.getCardNumber() + " validated at " + testjoin.getSwipeTime());
     }
 
     GetStudents getsalltudents = new GetStudents();
@@ -51,8 +52,23 @@ public class AttendanceReport
 
     for (Students student : allstudents)
     {
-      System.out.println("\nFirstname: " + student.getFirstName() + " Lastname: " + student.getLastName()
-          + " Cardnumber: " + student.getCardNumber());
+      String cardID = student.getCardNumber();
+      System.out.print("Firstname: " + student.getFirstName() + " Lastname: " + student.getLastName() + " Cardnumber: "
+          + student.getCardNumber());
+
+      String attendance = "Absent";
+
+      for (TestJoin testjoin : testjoins)
+      {
+        String swipeCardID = testjoin.getCardNumber();
+        if (cardID.equals(swipeCardID))
+        {
+          attendance = "Present";
+          break;
+        }
+      }
+
+      System.out.println(" Attendance: " + attendance);
 
     }
 
