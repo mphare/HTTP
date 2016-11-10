@@ -20,18 +20,7 @@ public class AttendanceReport
   {
     logger.info("About to generate the Attendance Report for " + date.toString());
 
-    // GetStudents getstudents = new GetStudents();
-    // List<Students> students = getstudents.getAllStudents();
-    //
-    // for (Students student : students)
-    // {
-    // System.out.println("\nFirstname: " + student.getFirstName() + ";
-    // Lastname: " + student.getLastName()
-    // + "; Cardnumber: " + student.getCardNumber());
-    //
-    // }
-    //
-    GetSwipes gs = new GetSwipes();
+    GetSwipes getSwipes = new GetSwipes();
     List<CardSwipes> cardswipes = new ArrayList<CardSwipes>();
 
     Calendar calNow = Calendar.getInstance();
@@ -39,37 +28,42 @@ public class AttendanceReport
 
     calNow.add(Calendar.MINUTE, -5);
     Date startDate = calNow.getTime();
-    cardswipes = gs.getRangeCardSwipes(startDate, endDate);
+    cardswipes = getSwipes.getRangeCardSwipes(startDate, endDate);
 
-    System.out.println("\nGetting last 5 minute swipes: Now:" + endDate + "  started: " + startDate);
-    for (CardSwipes cardswipe : cardswipes)
+    if (cardswipes.size() > 0)
     {
-      System.out.println("Card Number: " + cardswipe.getCardNumber() + " validated at " + cardswipe.getSwipeTime());
-    }
-
-    GetStudents getsalltudents = new GetStudents();
-    List<Students> allstudents = getsalltudents.getAllStudents();
-
-    for (Students student : allstudents)
-    {
-      String cardID = student.getCardNumber();
-      System.out.print("Firstname: " + student.getFirstName() + " Lastname: " + student.getLastName() + " Cardnumber: "
-          + student.getCardNumber());
-
-      String attendance = "Absent";
-
+      System.out.println("\nGetting swipes in the last 5 minutes: Time of report is:" + endDate
+          + "  Time class started is: " + startDate);
       for (CardSwipes cardswipe : cardswipes)
       {
-        String swipeCardID = cardswipe.getCardNumber();
-        if (cardID.equals(swipeCardID))
-        {
-          attendance = "Present";
-          break;
-        }
+        System.out
+            .println("Card Number: " + cardswipe.getCardNumber() + " was validated at " + cardswipe.getSwipeTime());
       }
 
-      System.out.println(" Attendance: " + attendance);
+      GetStudents getsalltudents = new GetStudents();
+      List<Students> allstudents = getsalltudents.getAllStudents();
 
+      for (Students student : allstudents)
+      {
+        String cardID = student.getCardNumber();
+        System.out.print("Firstname: " + student.getFirstName() + ", Lastname: " + student.getLastName()
+            + ", Cardnumber: " + student.getCardNumber());
+
+        String attendance = "Absent";
+
+        for (CardSwipes cardswipe : cardswipes)
+        {
+          String swipeCardID = cardswipe.getCardNumber();
+          if (cardID.equals(swipeCardID))
+          {
+            attendance = "Present";
+            break;
+          }
+        }
+
+        System.out.println(", Attendance: " + attendance);
+
+      }
     }
 
   }
