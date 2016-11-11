@@ -2,15 +2,22 @@ package com.whitehare.attendance.server.schedular;
 
 import java.util.Date;
 
+import org.apache.log4j.Logger;
+
+import com.whitehare.attendance.server.tasks.AttendanceReport;
+
 public class DoEveryMinuteJob implements Runnable
 {
+  private static Logger logger = Logger.getLogger(DoEveryMinuteJob.class);
 
   @Override
   public void run()
   {
-    Date date = new Date();
-    System.out.println("It's ben a minute: " + date.toString());
+    AttendanceReport ar = new AttendanceReport();
 
+    Date date = new Date();
+    logger.info("It's ben a minute: " + date.toString());
+    ar.generateAttendanceReport(date);
   }
 
 }

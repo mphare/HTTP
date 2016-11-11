@@ -8,13 +8,13 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
-@Entity(name = "JustCardSwipes")
+@Entity(name = "CardSwipes")
 @Table(name = "CardSwipes")
 public class CardSwipes
 {
 
   private long   swipeID;
-  private String cardnumber;
+  private String cardNumber;
   private String classRoom;
   private Date   swipeTime;
 
@@ -39,12 +39,12 @@ public class CardSwipes
   @Column(name = "CardNumber")
   public String getCardNumber()
   {
-    return cardnumber;
+    return cardNumber;
   }
 
   public void setCardNumber(String cardNumber)
   {
-    this.cardnumber = cardNumber;
+    this.cardNumber = cardNumber;
   }
 
   @Column(name = "ClassRoom")

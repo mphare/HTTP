@@ -1,6 +1,7 @@
 package com.whitehare.attendance.server.controller;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import org.hibernate.HibernateException;
@@ -28,8 +29,34 @@ public class GetSwipes
 
       String hql = "FROM TestJoins";
       Query query = session.createQuery(hql);
-      // String sql = "SELECT CardNumber FROM CardSwipes";
-      // Query query = session.createSQLQuery(sql);
+      results = query.list();
+
+      transaction.commit();
+
+    } catch (HibernateException e)
+    {
+      transaction.rollback();
+      e.printStackTrace();
+    } finally
+    {
+      session.close();
+    }
+    return results;
+  }
+
+  public List<CardSwipes> getRangeCardSwipes(Date startDate, Date endDate)
+  {
+    Session session = HibernateUtil.getSessionFactory().openSession();
+    Transaction transaction = null;
+
+    List<CardSwipes> results = new ArrayList<CardSwipes>();
+
+    try
+    {
+      transaction = session.beginTransaction();
+
+      String hql = "from CardSwipes as card_swipe where card_swipe.swipeTime > :startDate";
+      Query query = session.createQuery(hql).setParameter("startDate", startDate);
       results = query.list();
 
       transaction.commit();
