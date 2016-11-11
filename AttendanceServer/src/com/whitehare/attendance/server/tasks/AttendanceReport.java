@@ -11,6 +11,8 @@ import com.whitehare.attendance.server.controller.GetStudents;
 import com.whitehare.attendance.server.controller.GetSwipes;
 import com.whitehare.attendance.server.persistence.CardSwipes;
 import com.whitehare.attendance.server.persistence.Students;
+import com.whitehare.attendance.server.report.AttendanceReportFormat;
+import com.whitehare.attendance.server.sendmail.SendMail;
 
 public class AttendanceReport
 {
@@ -57,6 +59,11 @@ public class AttendanceReport
 
       GetStudents getsalltudents = new GetStudents();
       List<Students> allstudents = getsalltudents.getAllStudents();
+
+      AttendanceReportFormat htmlReport = new AttendanceReportFormat();
+      htmlReport.buildHTMLReport(allstudents, cardswipes, tardycardswipes);
+      SendMail sendMail = new SendMail();
+      sendMail.sendHTMLEmail(htmlReport);
 
       for (Students student : allstudents)
       {
