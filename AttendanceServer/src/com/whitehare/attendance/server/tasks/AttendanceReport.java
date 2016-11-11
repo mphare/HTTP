@@ -32,13 +32,14 @@ public class AttendanceReport
 
     if (cardswipes.size() > 0)
     {
-      System.out.println("\nGetting swipes in the last 5 minutes: Time of report is:" + endDate
-          + "  Time class started is: " + startDate);
+      logger.info("Getting swipes in the last 5 minutes: Time of report is:" + endDate + "  Time class started is: "
+          + startDate);
       for (CardSwipes cardswipe : cardswipes)
       {
-        System.out
-            .println("Card Number: " + cardswipe.getCardNumber() + " was validated at " + cardswipe.getSwipeTime());
+        logger.info("Card Number: " + cardswipe.getCardNumber() + " was validated at " + cardswipe.getSwipeTime());
       }
+
+      System.out.println("Attendance Report for " + startDate + " to " + endDate);
 
       GetStudents getsalltudents = new GetStudents();
       List<Students> allstudents = getsalltudents.getAllStudents();
@@ -64,6 +65,9 @@ public class AttendanceReport
         System.out.println(", Attendance: " + attendance);
 
       }
+    } else
+    {
+      logger.info("No card swipes for this time period");
     }
 
   }
