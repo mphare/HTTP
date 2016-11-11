@@ -11,7 +11,7 @@ import javax.persistence.Table;
 public class Students
 {
 
-  private long   studentID;
+  private long   indexStudent;
   private String firstName;
   private String lastName;
   private String cardNumber;
@@ -23,15 +23,15 @@ public class Students
 
   @Id
   @GeneratedValue
-  @Column(name = "StudentID")
+  @Column(name = "index_student")
   public long getStudentID()
   {
-    return studentID;
+    return indexStudent;
   }
 
-  public void setStudentID(long studentID)
+  public void setStudentID(long indexStudent)
   {
-    this.studentID = studentID;
+    this.indexStudent = indexStudent;
   }
 
   @Column(name = "FirstName")

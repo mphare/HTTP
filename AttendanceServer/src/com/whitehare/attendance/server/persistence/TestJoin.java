@@ -17,7 +17,7 @@ import javax.persistence.Table;
 @Table(name = "CardSwipes")
 public class TestJoin
 {
-  private long   swipeID;
+  private long   indexCardSwipe;
   private String cardnumber;
   private String classRoom;
   private Date   swipeTime;
@@ -29,15 +29,15 @@ public class TestJoin
 
   @Id
   @GeneratedValue
-  @Column(name = "SwipeID")
+  @Column(name = "index_cardswipe")
   public long getSwipeID()
   {
-    return swipeID;
+    return indexCardSwipe;
   }
 
-  public void setSwipeID(long swipeID)
+  public void setSwipeID(long indexCardSwipe)
   {
-    this.swipeID = swipeID;
+    this.indexCardSwipe = indexCardSwipe;
   }
 
   @Column(name = "CardNumber")

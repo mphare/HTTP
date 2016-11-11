@@ -13,7 +13,7 @@ import javax.persistence.Table;
 public class CardSwipes
 {
 
-  private long   swipeID;
+  private long   indexCardSwipe;
   private String cardNumber;
   private String classRoom;
   private Date   swipeTime;
@@ -25,15 +25,15 @@ public class CardSwipes
 
   @Id
   @GeneratedValue
-  @Column(name = "SwipeID")
+  @Column(name = "index_cardswipe")
   public long getSwipeID()
   {
-    return swipeID;
+    return indexCardSwipe;
   }
 
-  public void setSwipeID(long swipeID)
+  public void setSwipeID(long indexCardSwipe)
   {
-    this.swipeID = swipeID;
+    this.indexCardSwipe = indexCardSwipe;
   }
 
   @Column(name = "CardNumber")
