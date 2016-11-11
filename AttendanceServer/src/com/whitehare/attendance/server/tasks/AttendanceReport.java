@@ -22,18 +22,32 @@ public class AttendanceReport
 
     GetSwipes getSwipes = new GetSwipes();
     List<CardSwipes> cardswipes = new ArrayList<CardSwipes>();
+    List<CardSwipes> tardycardswipes = new ArrayList<CardSwipes>();
 
     Calendar calNow = Calendar.getInstance();
     Date endDate = calNow.getTime();
 
-    calNow.add(Calendar.MINUTE, -5);
+    calNow.add(Calendar.MINUTE, -3);
+    Date tardyDate = calNow.getTime();
+
+    calNow.add(Calendar.MINUTE, -2);
     Date startDate = calNow.getTime();
-    cardswipes = getSwipes.getRangeCardSwipes(startDate, endDate);
+
+    logger.info("Tardy start time: " + tardyDate + " to " + endDate);
+    tardycardswipes = getSwipes.getRangeCardSwipes(tardyDate, endDate);
+    logger.info("Present start time: " + startDate + " to " + tardyDate);
+    cardswipes = getSwipes.getRangeCardSwipes(startDate, tardyDate);
 
     if (cardswipes.size() > 0)
     {
       logger.info("Getting swipes in the last 5 minutes: Time of report is:" + endDate + "  Time class started is: "
           + startDate);
+
+      for (CardSwipes cardswipe : tardycardswipes)
+      {
+        logger.info("Card Number: " + cardswipe.getCardNumber() + " was validated at " + cardswipe.getSwipeTime());
+      }
+
       for (CardSwipes cardswipe : cardswipes)
       {
         logger.info("Card Number: " + cardswipe.getCardNumber() + " was validated at " + cardswipe.getSwipeTime());
@@ -58,6 +72,16 @@ public class AttendanceReport
           if (cardID.equals(swipeCardID))
           {
             attendance = "Present";
+            break;
+          }
+        }
+
+        for (CardSwipes cardswipe : tardycardswipes)
+        {
+          String swipeCardID = cardswipe.getCardNumber();
+          if (cardID.equals(swipeCardID))
+          {
+            attendance = "Tardy";
             break;
           }
         }
