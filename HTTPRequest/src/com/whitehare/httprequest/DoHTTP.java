@@ -6,6 +6,8 @@ import java.io.InputStreamReader;
 
 import org.apache.log4j.Logger;
 
+import com.whitehare.httprequest.properties.ConfigProperties;
+
 public class DoHTTP
 {
   private static Logger logger    = Logger.getLogger(DoHTTP.class);
@@ -17,6 +19,20 @@ public class DoHTTP
     // TODO Auto-generated method stub
     // HttpURLConnectionExample myHttp = new HttpURLConnectionExample();
     CardSwipe cs = new CardSwipe();
+    ConfigProperties cfgProp = new ConfigProperties();
+
+    try
+    {
+      cfgProp.getPropertyValues();
+    } catch (IOException e1)
+    {
+      // TODO Auto-generated catch block
+      e1.printStackTrace();
+    }
+
+    classRoom = cfgProp.getClassRoom();
+
+    logger.info("Class Room: " + classRoom);
 
     logger.info("Starting Card Swipe Reader for: Classroom: " + classRoom);
 
