@@ -19,8 +19,8 @@ public class SendMail
 
   public static void sendHTMLEmail(AttendanceReportFormat htmlReport)
   {
-    // String to = "mphare@whitehare.com";
-    String to = "mhare@zixcorp.com";
+    String to = "mphare@whitehare.com";
+    // String to = "mhare@zixcorp.com";
     String from = "prof.minerva.mcgonagall@hogwarts.edu";
     String host = "localhost";
     Properties properties = System.getProperties();

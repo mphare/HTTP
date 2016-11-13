@@ -17,7 +17,7 @@ public class WhenTestingServerReads
 {
   private static Logger logger = Logger.getLogger(WhenTestingServerReads.class);
 
-  // @Test
+  @Test
   public void shouldRetrieveCardSwipes()
   {
     logger.info("About to shouldRetrieveCardSwipes");
@@ -26,15 +26,17 @@ public class WhenTestingServerReads
 
     testjoins = gs.getAllCardSwipes();
 
-    logger.info("Size: " + testjoins.size() + " Number(1) " + testjoins.get(0).getCardNumber().toString());
+    logger.info("Size: " + testjoins.size() + " Number(1) " + testjoins.get(0).getStudent().getCardNumber().toString());
 
     for (TestJoin testjoin : testjoins)
     {
-      logger.info("[][]> " + testjoin.getCardNumber());
+      // String fn = testjoin.getStudent().getFirstName();
+      logger.info("[][]> " + testjoin.getStudent().getCardNumber().toString() + " Name: "
+          + testjoin.getStudent().getFirstName() + " Last: " + testjoin.getStudent().getLastName());
     }
   }
 
-  @Test
+  // @Test
   public void shouldRetrieveCardSwipesSQL()
   {
     logger.info("About to shouldRetrieveCardSwipesSQL");

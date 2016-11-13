@@ -13,9 +13,18 @@ import javax.persistence.Table;
 public class CardSwipes
 {
 
+  @Id
+  @GeneratedValue
+  @Column(name = "index_cardswipe")
   private long   indexCardSwipe;
+
+  @Column(name = "CardNumber")
   private String cardNumber;
+
+  @Column(name = "ClassRoom")
   private String classRoom;
+
+  @Column(name = "SwipeTime")
   private Date   swipeTime;
 
   public CardSwipes()
@@ -23,9 +32,6 @@ public class CardSwipes
 
   }
 
-  @Id
-  @GeneratedValue
-  @Column(name = "index_cardswipe")
   public long getSwipeID()
   {
     return indexCardSwipe;
@@ -36,7 +42,6 @@ public class CardSwipes
     this.indexCardSwipe = indexCardSwipe;
   }
 
-  @Column(name = "CardNumber")
   public String getCardNumber()
   {
     return cardNumber;
@@ -47,7 +52,6 @@ public class CardSwipes
     this.cardNumber = cardNumber;
   }
 
-  @Column(name = "ClassRoom")
   public String getClassRoom()
   {
     return classRoom;
@@ -58,7 +62,6 @@ public class CardSwipes
     this.classRoom = classRoom;
   }
 
-  @Column(name = "SwipeTime")
   public Date getSwipeTime()
   {
     return swipeTime;
