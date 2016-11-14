@@ -26,13 +26,13 @@ public class CardSwipe
 
     String url = serverAddress + "/AttendanceServer/web/send/swipe?cardnumber=" + cardnumber + "&classroom="
         + classroom;
-    System.out.println("\nSwiping Card: card number: " + cardnumber + " classroom: " + classroom + " URL: " + url);
+    System.out.println("Swiping Card: card number: " + cardnumber + " classroom: " + classroom + " URL: " + url);
     URL obj = new URL(url);
     HttpURLConnection con = (HttpURLConnection) obj.openConnection();
     con.setRequestMethod("POST");
     con.setRequestProperty("User-Agent", USER_AGENT);
     con.setRequestProperty("Accept-Language", "en-US,en;q=0.5");
     int responseCode = con.getResponseCode();
-    System.out.println("\nPOST: Response Code : " + responseCode);
+    System.out.println("POST: Response Code : " + responseCode);
   }
 }

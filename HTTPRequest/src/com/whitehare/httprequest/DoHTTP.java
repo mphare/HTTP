@@ -16,8 +16,7 @@ public class DoHTTP
   public static void main(String[] args)
   {
     String cardNumber = "00000000";
-    // TODO Auto-generated method stub
-    // HttpURLConnectionExample myHttp = new HttpURLConnectionExample();
+
     CardSwipe cs = new CardSwipe();
     ConfigProperties cfgProp = new ConfigProperties();
 
@@ -26,13 +25,11 @@ public class DoHTTP
       cfgProp.getPropertyValues();
     } catch (IOException e1)
     {
-      // TODO Auto-generated catch block
       e1.printStackTrace();
     }
 
+    // Get the class room from the properties file
     classRoom = cfgProp.getClassRoom();
-
-    logger.info("Class Room: " + classRoom);
 
     logger.info("Starting Card Swipe Reader for: Classroom: " + classRoom);
 
@@ -40,14 +37,17 @@ public class DoHTTP
 
     try
     {
+      // open the connection to the card reader
       br = new BufferedReader(new InputStreamReader(System.in));
 
       while (true)
       {
-        System.out.print("Card Number: ");
+        System.out.println("Card Number: ");
 
+        // Read the card number from the card reader
         cardNumber = br.readLine();
 
+        // enter the letter 'q' to quit reading
         if ("q".equals(cardNumber))
         {
           logger.info("Quit Reading Card Swipes for: Classroom: " + classRoom);
