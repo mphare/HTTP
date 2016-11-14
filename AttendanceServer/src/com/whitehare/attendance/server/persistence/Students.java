@@ -11,9 +11,18 @@ import javax.persistence.Table;
 public class Students
 {
 
-  private long   studentID;
+  @GeneratedValue
+  @Column(name = "index_student")
+  private long   indexStudent;
+
+  @Column(name = "FirstName")
   private String firstName;
+
+  @Column(name = "LastName")
   private String lastName;
+
+  @Id
+  @Column(name = "CardNumber")
   private String cardNumber;
 
   public Students()
@@ -21,20 +30,16 @@ public class Students
 
   }
 
-  @Id
-  @GeneratedValue
-  @Column(name = "StudentID")
   public long getStudentID()
   {
-    return studentID;
+    return indexStudent;
   }
 
-  public void setStudentID(long studentID)
+  public void setStudentID(long indexStudent)
   {
-    this.studentID = studentID;
+    this.indexStudent = indexStudent;
   }
 
-  @Column(name = "FirstName")
   public String getFirstName()
   {
     return firstName;
@@ -45,7 +50,6 @@ public class Students
     this.firstName = firstName;
   }
 
-  @Column(name = "LastName")
   public String getLastName()
   {
     return lastName;
@@ -56,7 +60,6 @@ public class Students
     this.lastName = lastName;
   }
 
-  @Column(name = "CardNumber")
   public String getCardNumber()
   {
     return cardNumber;

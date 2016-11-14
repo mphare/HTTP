@@ -6,6 +6,8 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 /*
@@ -17,41 +19,49 @@ import javax.persistence.Table;
 @Table(name = "CardSwipes")
 public class TestJoin
 {
-  private long   swipeID;
-  private String cardnumber;
-  private String classRoom;
-  private Date   swipeTime;
+  @Id
+  @GeneratedValue
+  @Column(name = "index_cardswipe")
+  private long     indexCardSwipe;
+
+  // @Column(name = "CardNumber")
+  // private String cardnumber;
+
+  @Column(name = "ClassRoom")
+  private String   classRoom;
+
+  @Column(name = "SwipeTime")
+  private Date     swipeTime;
+
+  @ManyToOne
+  @JoinColumn(name = "CardNumber")
+  private Students student;
 
   public TestJoin()
   {
 
   }
 
-  @Id
-  @GeneratedValue
-  @Column(name = "SwipeID")
   public long getSwipeID()
   {
-    return swipeID;
+    return indexCardSwipe;
   }
 
-  public void setSwipeID(long swipeID)
+  public void setSwipeID(long indexCardSwipe)
   {
-    this.swipeID = swipeID;
+    this.indexCardSwipe = indexCardSwipe;
   }
 
-  @Column(name = "CardNumber")
-  public String getCardNumber()
-  {
-    return cardnumber;
-  }
+  // public String getCardNumber()
+  // {
+  // return cardnumber;
+  // }
+  //
+  // public void setCardNumber(String cardNumber)
+  // {
+  // this.cardnumber = cardNumber;
+  // }
 
-  public void setCardNumber(String cardNumber)
-  {
-    this.cardnumber = cardNumber;
-  }
-
-  @Column(name = "ClassRoom")
   public String getClassRoom()
   {
     return classRoom;
@@ -62,7 +72,6 @@ public class TestJoin
     this.classRoom = classRoom;
   }
 
-  @Column(name = "SwipeTime")
   public Date getSwipeTime()
   {
     return swipeTime;
@@ -71,6 +80,16 @@ public class TestJoin
   public void setSwipeTime(Date swipeTime)
   {
     this.swipeTime = swipeTime;
+  }
+
+  public Students getStudent()
+  {
+    return student;
+  }
+
+  public void setStudent(Students student)
+  {
+    this.student = student;
   }
 
 }

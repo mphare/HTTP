@@ -11,6 +11,7 @@ import javax.mail.internet.MimeMessage;
 
 import org.apache.log4j.Logger;
 
+import com.whitehare.attendance.server.properties.ConfigProperties;
 import com.whitehare.attendance.server.report.AttendanceReportFormat;
 
 public class SendMail
@@ -19,8 +20,16 @@ public class SendMail
 
   public static void sendHTMLEmail(AttendanceReportFormat htmlReport)
   {
-    // String to = "mphare@whitehare.com";
+
+    ConfigProperties cfgProp = new ConfigProperties();
+
+    String mail_to = cfgProp.getMailTo();
+    String maiL_from = cfgProp.getMailFrom();
+
+    // String to = mail_to;
+    // String to = "mphare1156@gmail.com";
     String to = "mhare@zixcorp.com";
+    // String to = "mphare@whitehare.com";
     String from = "prof.minerva.mcgonagall@hogwarts.edu";
     String host = "localhost";
     Properties properties = System.getProperties();
