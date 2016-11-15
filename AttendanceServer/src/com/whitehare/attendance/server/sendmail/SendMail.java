@@ -1,5 +1,6 @@
 package com.whitehare.attendance.server.sendmail;
 
+import java.io.IOException;
 import java.util.Properties;
 
 import javax.mail.Message;
@@ -23,14 +24,26 @@ public class SendMail
 
     ConfigProperties cfgProp = new ConfigProperties();
 
+    try
+    {
+      cfgProp.getPropertyValue();
+    } catch (IOException e)
+    {
+      // TODO Auto-generated catch block
+      e.printStackTrace();
+    }
+
     String mail_to = cfgProp.getMailTo();
     String maiL_from = cfgProp.getMailFrom();
 
-    // String to = mail_to;
+    String to = mail_to;
+    String from = maiL_from;
+
     // String to = "mphare1156@gmail.com";
-    String to = "mhare@zixcorp.com";
+    // String to = "mhare@zixcorp.com";
     // String to = "mphare@whitehare.com";
-    String from = "prof.minerva.mcgonagall@hogwarts.edu";
+    // String from = "prof.minerva.mcgonagall@hogwarts.edu";
+
     String host = "localhost";
     Properties properties = System.getProperties();
     properties.setProperty("mail.smtp.host", host);
@@ -44,9 +57,8 @@ public class SendMail
       message.setSubject("Test Email from Java");
       message.setContent(htmlReport.getReport(), "text/html");
 
-      logger.debug("Sending html email to:" + to + " from: " + from);
+      logger.info("Sending html email to:" + to + " from: " + from);
       Transport.send(message);
-      logger.debug("Sent html email to:" + to + " from: " + from);
 
     } catch (MessagingException mex)
     {

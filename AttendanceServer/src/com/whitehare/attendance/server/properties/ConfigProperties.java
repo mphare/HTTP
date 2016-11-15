@@ -18,7 +18,7 @@ public class ConfigProperties
     try
     {
       Properties prop = new Properties();
-      String configPropertyFileName = "config.properties";
+      String configPropertyFileName = "server.properties";
 
       inputStream = getClass().getClassLoader().getResourceAsStream(configPropertyFileName);
       if (inputStream != null)
