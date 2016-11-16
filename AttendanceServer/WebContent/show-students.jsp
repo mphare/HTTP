@@ -13,8 +13,13 @@
   String textColor = "0x05a";
 %>
 <body text="<%=textColor%>">
+<%@page import="com.whitehare.attendance.server.ui.AttendanceReportTable" %>
 	<%@ include file="parts/Header.jsp"%>
 	<h1>List of Students</h1>
+	<% 
+	String msg = AttendanceReportTable.drawTable();
+	out.print(msg);
+	%>
 	<%@ include file="parts/Footer.jsp"%>
 </body>
 </html>
