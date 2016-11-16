@@ -29,10 +29,10 @@ public class AttendanceReport
     Calendar calNow = Calendar.getInstance();
     Date endDate = calNow.getTime();
 
-    calNow.add(Calendar.MINUTE, -3);
+    calNow.add(Calendar.MINUTE, -2);
     Date tardyDate = calNow.getTime();
 
-    calNow.add(Calendar.MINUTE, -2);
+    calNow.add(Calendar.MINUTE, -1);
     Date startDate = calNow.getTime();
 
     logger.info("Tardy start time: " + tardyDate + " to " + endDate);

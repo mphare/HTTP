@@ -8,13 +8,20 @@ import java.util.Properties;
 public class ConfigProperties
 {
 
-  InputStream    inputStream;
+  public enum Contract
+  {
+    report_mail_to, report_mail_from, mail_server, mail_report;
+  }
 
-  private String mailTo   = "";
-  private String mailFrom = "";
+  private String mailTo     = "";
+  private String mailFrom   = "";
+  private String mailHost   = "";
+  private String mailReport = "";
 
   public void getPropertyValue() throws IOException
   {
+    InputStream inputStream = null;
+
     try
     {
       Properties prop = new Properties();
@@ -30,8 +37,10 @@ public class ConfigProperties
         throw new FileNotFoundException("Property File: '" + configPropertyFileName + "' was not found");
       }
 
-      mailTo = prop.getProperty("report_mail_to");
-      mailFrom = prop.getProperty("report_mail_from");
+      mailTo = prop.getProperty(Contract.report_mail_to.toString());
+      mailFrom = prop.getProperty(Contract.report_mail_from.toString());
+      mailHost = prop.getProperty(Contract.mail_server.toString());
+      mailReport = prop.getProperty(Contract.mail_report.toString());
 
     } catch (Exception e)
     {
@@ -60,6 +69,26 @@ public class ConfigProperties
   public void setMailFrom(String mailFrom)
   {
     this.mailFrom = mailFrom;
+  }
+
+  public String getMailHost()
+  {
+    return mailHost;
+  }
+
+  public void setMailHost(String mailHost)
+  {
+    this.mailHost = mailHost;
+  }
+
+  public String getMailReport()
+  {
+    return mailReport;
+  }
+
+  public void setMailReport(String mailReport)
+  {
+    this.mailReport = mailReport;
   }
 
 }

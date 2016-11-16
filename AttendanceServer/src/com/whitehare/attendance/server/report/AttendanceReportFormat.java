@@ -18,8 +18,15 @@ public class AttendanceReportFormat
 
   public void buildHTMLReport(List<Students> allstudents, List<CardSwipes> cardswipes, List<CardSwipes> tardycardswipes)
   {
-    htmlReport = "<h1>Attendance Report</h1><br><h2>Room: " + cardswipes.get(0).getClassRoom();
-    htmlReport += "<table><tr><th>Card ID</th><th>First Name</th><th>Last Name</th><th>Status</th></tr>";
+    htmlReport = htmlAttendanceReport(allstudents, cardswipes, tardycardswipes);
+  }
+
+  public String htmlAttendanceReport(List<Students> allstudents, List<CardSwipes> cardswipes,
+      List<CardSwipes> tardycardswipes)
+  {
+    // String htmlReport = "<h1>Attendance Report</h1><br><h2>Room: " +
+    // cardswipes.get(0).getClassRoom();
+    String htmlReport = "<table><tr><th>Card ID</th><th>First Name</th><th>Last Name</th><th>Status</th></tr>";
     String attendance;
     for (Students student : allstudents)
     {
@@ -50,6 +57,8 @@ public class AttendanceReportFormat
 
     }
     htmlReport += "</table>";
+
+    return htmlReport;
   }
 
   public String getReport()

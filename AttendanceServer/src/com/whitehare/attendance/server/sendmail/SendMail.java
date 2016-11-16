@@ -29,7 +29,6 @@ public class SendMail
       cfgProp.getPropertyValue();
     } catch (IOException e)
     {
-      // TODO Auto-generated catch block
       e.printStackTrace();
     }
 
@@ -44,9 +43,10 @@ public class SendMail
     // String to = "mphare@whitehare.com";
     // String from = "prof.minerva.mcgonagall@hogwarts.edu";
 
-    String host = "localhost";
+    String mail_host = cfgProp.getMailHost();
+
     Properties properties = System.getProperties();
-    properties.setProperty("mail.smtp.host", host);
+    properties.setProperty("mail.smtp.host", mail_host);
 
     Session session = Session.getDefaultInstance(properties);
     try
