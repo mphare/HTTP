@@ -6,7 +6,7 @@ import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 
 import com.whitehare.attendance.server.controller.GetFirstStudent;
-import com.whitehare.attendance.server.controller.GetStudents;
+import com.whitehare.attendance.server.controller.StudentsCont;
 
 @Path("/students")
 public class StudentServiceCenter
@@ -17,7 +17,7 @@ public class StudentServiceCenter
   @Produces(MediaType.TEXT_PLAIN)
   public String getAllStudents()
   {
-    GetStudents gs = new GetStudents();
+    StudentsCont gs = new StudentsCont();
 
     return "XXX";
   }

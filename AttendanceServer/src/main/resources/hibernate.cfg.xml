@@ -18,5 +18,6 @@
 		<mapping class="com.whitehare.attendance.server.persistence.CardSwipes" />
 		<mapping class="com.whitehare.attendance.server.persistence.Students" />
 		<mapping class="com.whitehare.attendance.server.persistence.TestJoin" />
+		<mapping class="com.whitehare.attendance.server.persistence.ClassRooms" />
 	</session-factory>
 </hibernate-configuration>

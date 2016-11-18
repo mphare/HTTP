@@ -2,7 +2,7 @@ package com.whitehare.attendance.server.ui;
 
 import java.util.List;
 
-import com.whitehare.attendance.server.controller.GetStudents;
+import com.whitehare.attendance.server.controller.StudentsCont;
 import com.whitehare.attendance.server.persistence.Students;
 
 public class StudentReport
@@ -11,7 +11,7 @@ public class StudentReport
   {
     String retval = "This is from the Java Class";
 
-    GetStudents getsalltudents = new GetStudents();
+    StudentsCont getsalltudents = new StudentsCont();
     List<Students> allstudents = getsalltudents.getAllStudents();
 
     retval += " Number: " + allstudents.size();

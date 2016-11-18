@@ -7,7 +7,7 @@ import java.util.List;
 import org.apache.log4j.Logger;
 import org.junit.Test;
 
-import com.whitehare.attendance.server.controller.GetStudents;
+import com.whitehare.attendance.server.controller.StudentsCont;
 import com.whitehare.attendance.server.controller.GetSwipes;
 import com.whitehare.attendance.server.persistence.CardSwipes;
 import com.whitehare.attendance.server.persistence.Students;
@@ -60,7 +60,7 @@ public class WhenTestingServerReads
   public void shouldRetrieveStudents()
   {
     logger.info("About to shouldRetrieveStudents");
-    GetStudents gs = new GetStudents();
+    StudentsCont gs = new StudentsCont();
     List<Students> students = gs.getAllStudents();
 
     for (Students student : students)

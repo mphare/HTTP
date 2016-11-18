@@ -10,7 +10,7 @@ import org.hibernate.Transaction;
 import com.whitehare.attendance.server.persistence.Students;
 import com.whitehare.attendance.server.persistence.util.HibernateUtil;
 
-public class GetStudents
+public class StudentsCont
 {
   public List<Students> getAllStudents()
   {
@@ -24,8 +24,6 @@ public class GetStudents
 
       String hql = "from Students order by lastName";
       Query query = session.createQuery(hql);
-      // String sql = "SELECT * FROM Students";
-      // Query query = session.createSQLQuery(sql);
       results = query.list();
 
       transaction.commit();

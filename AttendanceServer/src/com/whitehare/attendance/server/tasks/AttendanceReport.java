@@ -8,7 +8,7 @@ import java.util.List;
 import org.apache.log4j.Logger;
 
 import com.whitehare.attendance.server.beans.Attendance;
-import com.whitehare.attendance.server.controller.GetStudents;
+import com.whitehare.attendance.server.controller.StudentsCont;
 import com.whitehare.attendance.server.controller.GetSwipes;
 import com.whitehare.attendance.server.persistence.CardSwipes;
 import com.whitehare.attendance.server.persistence.Students;
@@ -48,7 +48,7 @@ public class AttendanceReport
       logger.info("Getting swipes in the last 5 minutes: Time of report is:" + endDate + "  Time class started is: "
           + startDate);
 
-      GetStudents getsalltudents = new GetStudents();
+      StudentsCont getsalltudents = new StudentsCont();
       List<Students> allstudents = getsalltudents.getAllStudents();
 
       for (Students student : allstudents)
