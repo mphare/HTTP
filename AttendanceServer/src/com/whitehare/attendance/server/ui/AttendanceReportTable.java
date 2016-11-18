@@ -1,22 +1,31 @@
 package com.whitehare.attendance.server.ui;
 
+import java.util.Date;
 import java.util.List;
 
-import com.whitehare.attendance.server.controller.GetStudents;
-import com.whitehare.attendance.server.persistence.Students;
+import com.whitehare.attendance.server.beans.Attendance;
+import com.whitehare.attendance.server.tasks.AttendanceReport;
 
 public class AttendanceReportTable
 {
 
-  public static String drawTable()
+  private static List<Attendance> calculateAttendance()
   {
-    String retval = "<table><tr><th>Card Number</th><th>Last</th><th>First</th></tr>";
 
-    GetStudents getsalltudents = new GetStudents();
-    List<Students> allstudents = getsalltudents.getAllStudents();
+    Date date = new Date();
+    AttendanceReport ar = new AttendanceReport();
+    List<Attendance> attendance = ar.generateAttendanceReport(date);
+
+    return attendance;
+  }
+
+  public static String drawAttendanceTable()
+  {
+    List<Attendance> attendanceList = calculateAttendance();
+    String retval = "<table><tr><th>Card Number</th><th>Last</th><th>First</th><th>Attendance</th></tr>";
 
     int rowStyleId = 0;
-    for (Students student : allstudents)
+    for (Attendance attendance : attendanceList)
     {
       String rowStyle = "odd";
       rowStyleId++;
@@ -24,8 +33,9 @@ public class AttendanceReportTable
       {
         rowStyle = "even";
       }
-      retval += "<tr class=\"" + rowStyle + "\"><td>" + student.getCardNumber() + "</td><td>" + student.getLastName()
-          + "</td><td>" + student.getFirstName() + "</td></tr>";
+      retval += "<tr class=\"" + rowStyle + "\"><td>" + attendance.getCardNumber() + "</td><td>"
+          + attendance.getLastName() + "</td><td>" + attendance.getFirstName() + "</td><td>"
+          + attendance.getAttendanceStatus() + "</td></tr>";
 
     }
 

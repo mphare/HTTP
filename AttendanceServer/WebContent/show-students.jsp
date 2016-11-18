@@ -17,7 +17,7 @@
 	<%@ include file="parts/Header.jsp"%>
 	<h1>List of Students</h1>
 	<% 
-	String msg = AttendanceReportTable.drawTable();
+	String msg = AttendanceReportTable.drawAttendanceTable();
 	out.print(msg);
 	%>
 	<%@ include file="parts/Footer.jsp"%>

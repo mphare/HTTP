@@ -13,13 +13,13 @@ import javax.mail.internet.MimeMessage;
 import org.apache.log4j.Logger;
 
 import com.whitehare.attendance.server.properties.ConfigProperties;
-import com.whitehare.attendance.server.report.AttendanceReportFormat;
+import com.whitehare.attendance.server.report.EmailAttendanceReportFormat;
 
 public class SendMail
 {
   private static Logger logger = Logger.getLogger(SendMail.class);
 
-  public static void sendHTMLEmail(AttendanceReportFormat htmlReport)
+  public static void sendHTMLEmail(EmailAttendanceReportFormat htmlReport)
   {
 
     ConfigProperties cfgProp = new ConfigProperties();

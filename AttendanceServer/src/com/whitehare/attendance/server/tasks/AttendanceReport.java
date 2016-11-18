@@ -7,20 +7,23 @@ import java.util.List;
 
 import org.apache.log4j.Logger;
 
+import com.whitehare.attendance.server.beans.Attendance;
 import com.whitehare.attendance.server.controller.GetStudents;
 import com.whitehare.attendance.server.controller.GetSwipes;
 import com.whitehare.attendance.server.persistence.CardSwipes;
 import com.whitehare.attendance.server.persistence.Students;
-import com.whitehare.attendance.server.report.AttendanceReportFormat;
+import com.whitehare.attendance.server.report.EmailAttendanceReportFormat;
 import com.whitehare.attendance.server.sendmail.SendMail;
 
 public class AttendanceReport
 {
   private static Logger logger = Logger.getLogger(AttendanceReport.class);
 
-  public void generateAttendanceReport(Date date)
+  public List<Attendance> generateAttendanceReport(Date date)
   {
     logger.info("About to generate the Attendance Report for " + date.toString());
+
+    List<Attendance> attendanceList = new ArrayList<Attendance>();
 
     GetSwipes getSwipes = new GetSwipes();
     List<CardSwipes> cardswipes = new ArrayList<CardSwipes>();
@@ -45,40 +48,23 @@ public class AttendanceReport
       logger.info("Getting swipes in the last 5 minutes: Time of report is:" + endDate + "  Time class started is: "
           + startDate);
 
-      for (CardSwipes cardswipe : tardycardswipes)
-      {
-        logger.info("Card Number: " + cardswipe.getCardNumber() + " was validated at " + cardswipe.getSwipeTime());
-      }
-
-      for (CardSwipes cardswipe : cardswipes)
-      {
-        logger.info("Card Number: " + cardswipe.getCardNumber() + " was validated at " + cardswipe.getSwipeTime());
-      }
-
-      System.out.println("Attendance Report for " + startDate + " to " + endDate);
-
       GetStudents getsalltudents = new GetStudents();
       List<Students> allstudents = getsalltudents.getAllStudents();
-
-      AttendanceReportFormat htmlReport = new AttendanceReportFormat();
-      htmlReport.buildHTMLReport(allstudents, cardswipes, tardycardswipes);
-      SendMail sendMail = new SendMail();
-      sendMail.sendHTMLEmail(htmlReport);
 
       for (Students student : allstudents)
       {
         String cardID = student.getCardNumber();
-        System.out.print("Firstname: " + student.getFirstName() + ", Lastname: " + student.getLastName()
-            + ", Cardnumber: " + student.getCardNumber());
 
-        String attendance = "Absent";
+        String attendanceStatus = "Absent";
+        Date swipeTime = null;
 
         for (CardSwipes cardswipe : cardswipes)
         {
           String swipeCardID = cardswipe.getCardNumber();
           if (cardID.equals(swipeCardID))
           {
-            attendance = "Present";
+            attendanceStatus = "Present";
+            swipeTime = cardswipe.getSwipeTime();
             break;
           }
         }
@@ -88,18 +74,41 @@ public class AttendanceReport
           String swipeCardID = cardswipe.getCardNumber();
           if (cardID.equals(swipeCardID))
           {
-            attendance = "Tardy";
+            attendanceStatus = "Tardy";
+            swipeTime = cardswipe.getSwipeTime();
             break;
           }
         }
 
-        System.out.println(", Attendance: " + attendance);
+        Attendance attendance = new Attendance();
+        attendance.setFirstName(student.getFirstName());
+        attendance.setLastName(student.getLastName());
+        attendance.setCardNumber(student.getCardNumber());
+        attendance.setAttendanceStatus(attendanceStatus);
+        attendance.setCardReadTime(swipeTime);
+
+        attendanceList.add(attendance);
+
+        logger.info("Firstname: " + student.getFirstName() + ", Lastname: " + student.getLastName() + ", Cardnumber: "
+            + student.getCardNumber() + ", Attendance: " + attendanceStatus);
 
       }
     } else
     {
       logger.info("No card swipes for this time period");
     }
+
+    return attendanceList;
+  }
+
+  public void processAttendanceReport(Date date)
+  {
+    List<Attendance> attendanceList = generateAttendanceReport(date);
+
+    EmailAttendanceReportFormat htmlReport = new EmailAttendanceReportFormat();
+    htmlReport.buildEmailHTMLReport(attendanceList);
+    SendMail sendMail = new SendMail();
+    sendMail.sendHTMLEmail(htmlReport);
 
   }
 

@@ -16,8 +16,8 @@ public class DoEveryMinuteJob implements Runnable
     AttendanceReport ar = new AttendanceReport();
 
     Date date = new Date();
-    logger.info("It's ben a minute: " + date.toString());
-    ar.generateAttendanceReport(date);
+    logger.info("It's been a class period: " + date.toString());
+    ar.processAttendanceReport(date);
   }
 
 }
