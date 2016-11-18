@@ -22,7 +22,7 @@ public class GetStudents
     {
       transaction = session.beginTransaction();
 
-      String hql = "FROM Students";
+      String hql = "from Students order by lastName";
       Query query = session.createQuery(hql);
       // String sql = "SELECT * FROM Students";
       // Query query = session.createSQLQuery(sql);

@@ -6,7 +6,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta name="keywords" content="JSP, expressions, JavaServer Pages" />
 <meta name="description" content="A quick example of JSP expressions." />
-<link rel=stylesheet href="/FirstDWP/Style/Master.css" type="text/css" />
+<link rel=stylesheet href="/AttendanceServer/style/Master.css" type="text/css" />
 <title>Insert title here</title>
 </head>
 <%
